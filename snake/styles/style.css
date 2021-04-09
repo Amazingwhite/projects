@@ -1,0 +1,32 @@
+body {
+    background-color: #D2691E;
+}
+
+#mainContainer{
+    width: 600px;
+    display: block;
+    margin: 0 auto;
+}
+
+#canvasContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+#scoreBoard {
+    text-align: center;
+    font-size: 3vmin;
+	font-weight: bold;
+    background-color: #A52A2A;
+}
+
+#isPause {
+    width: 200px;
+    height: 50px;
+    margin: 0 auto;
+    background-color: #A52A2A;
+    text-align: center;
+    font-size: 3vmin;
+	font-weight: bold;
+}
+
