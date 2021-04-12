@@ -10,7 +10,7 @@ const useStyles = makeStyles({
         justifyContent: 'flex-start'
     },
     container: {
-        width: 970,
+        width: 969,
         height: 700,
         display: 'flex',
         justifyContent: 'space-around',
