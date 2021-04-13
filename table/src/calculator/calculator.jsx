@@ -1,5 +1,6 @@
 import { Button, makeStyles } from '@material-ui/core';
 import Slider from '@material-ui/core/Slider';
+import { useEffect, useState } from 'react';
 import './calculator.css';
 
 const useStyles = makeStyles({
@@ -10,7 +11,7 @@ const useStyles = makeStyles({
         justifyContent: 'flex-start'
     },
     container: {
-        width: 969,
+        width: 970,
         height: 700,
         display: 'flex',
         justifyContent: 'space-around',
@@ -42,24 +43,63 @@ const useStyles = makeStyles({
     estateCost: {
         margin: 8
     },
+    firstDeposit: {
+        margin: 8
+    },
     estateCostText: {
         display: 'block'
     },
-    input:{
-    width: '100%',
-    border: '1px solid #CED1D7',
-    height: 40,
-    outline: 'none',
-    padding: '9px 12px',
-    fontSize: 16,
-    boxSizing:' border-box',
-    fontFamily: 'Lato,Arial,sans-serif',
-    lineHeight: 22,
-    borderRadius: 4
+    estateInput: {
+        width: '100%',
+        border: '1px solid #CED1D7',
+        height: 40,
+        outline: 'none',
+        padding: '9px 12px',
+        fontSize: 16,
+        boxSizing: ' border-box',
+        fontFamily: 'Lato,Arial,sans-serif',
+        lineHeight: 22,
+        borderRadius: 4
+    },
+    firstDepositInput: {
+        width: '100%',
+        border: '1px solid #CED1D7',
+        height: 40,
+        outline: 'none',
+        padding: '9px 12px',
+        fontSize: 16,
+        boxSizing: ' border-box',
+        fontFamily: 'Lato,Arial,sans-serif',
+        lineHeight: 22,
+        borderRadius: 4
     }
 })
 
 function Calculator() {
+
+    const [estateValue, setEstateValue] = useState(500000);
+
+    const handleEstateSliderChange = (event, newEstateValue) => {
+        setEstateValue(newEstateValue);
+    }
+
+    const handleEstateInputChange = (event) => {
+        setEstateValue(+event.target.value);
+    };
+
+    const [firstDepositValue, setFirstDepositValue] = useState(0);
+
+    const handleFirstDepositSliderChange = (event, newFirstDepositValue) => {
+        setFirstDepositValue(newFirstDepositValue);
+    }
+
+    const handleFirstDepositInputChange = (event) => {
+        setFirstDepositValue(+event.target.value);
+    };
+
+
+
+
     const classes = useStyles();
     return (
         <div className="calculator">
@@ -73,10 +113,30 @@ function Calculator() {
 
                     <div className={classes.estateCost}>
                         <p>Стоимость недвижимости</p>
-                        <input className={classes.input}></input>
-                        <Slider></Slider>
+                        <input className={classes.estateInput} type="number" value={estateValue} onChange={handleEstateInputChange}></input>
+                        <Slider
+                            min={500000}
+                            max={99999999}
+                            step={280000}
+                            defaultValue={500000}
+                            onChange={handleEstateSliderChange}
+                            value={typeof estateValue === 'number' ? estateValue : 500000}
+                        ></Slider>
                     </div>
-                    
+
+                    <div className={classes.firstDeposit}>
+                        <p>Первоначальный взнос</p>
+                        <input className={classes.firstDepositInput} type="number" value={firstDepositValue >= estateValue - 500000 ? estateValue - 500000 : firstDepositValue} onChange={handleFirstDepositInputChange}></input>
+                        <Slider
+                            min={0}
+                            max={estateValue - 500000}
+                            step={10000}
+                            defaultValue={0}
+                            onChange={handleFirstDepositSliderChange}
+                            value={firstDepositValue}
+                        ></Slider>
+                    </div>
+
                     <h1>Hello</h1>
                 </div>
                 <div className={classes.rightPanel}>
