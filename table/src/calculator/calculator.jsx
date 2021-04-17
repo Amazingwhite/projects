@@ -1,21 +1,42 @@
-import { Button } from '@material-ui/core';
+import { Button, makeStyles } from '@material-ui/core';
 import Slider from '@material-ui/core/Slider';
 import { useState } from 'react';
 import classes from './calculator.module.css';
 
+const useStyles = makeStyles({
+    root: {
+        color: 'rgba(0, 0, 0, 0.87)',
+        padding: 0,
+        minWidth: 0,
+        height: 24,
+        width: 39,
+        boxSizing: 'border-box',
+        margin: 4,
+        fontSize: 12,
+        backgroundColor: 'rgba(21, 34, 66, 0.06)',
+        borderRadius: 16
+    }
+})
+
 export default function Calculator() {
+
+    const styles = useStyles();
 
     const [estateValue, setEstateValue] = useState(500000);
     const [firstDepositValue, setFirstDepositValue] = useState(0);
     const [loanPeriorValue, setLoanPeriorValue] = useState(1);
     const [interestRateValue, setInterestRateValue] = useState(1);
 
+    if(estateValue < 500000) setEstateValue(500000);
+
     const handleEstateSliderChange = (event, newEstateValue) => {
         setEstateValue(newEstateValue);
     };
 
     const handleEstateInputChange = (event) => {
+        
         setEstateValue(+event.target.value);
+    
     };
 
     const handleFirstDepositSliderChange = (event, newFirstDepositValue) => {
@@ -24,8 +45,9 @@ export default function Calculator() {
 
     const handleFirstDepositInputChange = (event) => {
         setFirstDepositValue(+event.target.value);
+        
     };
-    
+
     const firstDepositPercentCounter = (event) => {
         setFirstDepositValue((estateValue - 500000)*event.currentTarget.value)
     };
@@ -54,6 +76,24 @@ export default function Calculator() {
         setInterestRateValue(+event.currentTarget.value);
     };
 
+    const isBelowLimit = (event) => {
+        switch(+event.target.value) {
+            case estateValue: 
+                if(+event.target.value < 500000) setEstateValue(500000);
+                break;
+            case firstDepositValue:
+                if(+event.target.value < 0) setFirstDepositValue(0);
+                break;
+            case loanPeriorValue:
+                if(+event.target.value < 1) setLoanPeriorValue(1);
+                break;
+            case interestRateValue:
+                if(+event.target.value < 1) setInterestRateValue(1);
+                break;
+            default: break;
+        }     
+    };
+
     return (
         <div className="calculator">
             <div className={classes.container}>
@@ -66,7 +106,7 @@ export default function Calculator() {
 
                     <div className={classes.estateCost}>
                         <p>Стоимость недвижимости</p>
-                        <input className={classes.estateInput} type="number" value={estateValue} onChange={handleEstateInputChange} />
+                        <input className={classes.estateInput} type="number" value={estateValue} onChange={handleEstateInputChange} onBlur={isBelowLimit}/>
                         <Slider
                             min={500000}
                             max={99999999}
@@ -82,7 +122,8 @@ export default function Calculator() {
                             className={classes.firstDepositInput} 
                             type="number" 
                             value={firstDepositValue >= estateValue - 500000 ? estateValue - 500000 : firstDepositValue} 
-                            onChange={handleFirstDepositInputChange} />
+                            onChange={handleFirstDepositInputChange} 
+                            onBlur={isBelowLimit}/>
                         <Slider
                             min={0}
                             max={estateValue - 500000}
@@ -92,18 +133,18 @@ export default function Calculator() {
                             value={firstDepositValue}/>
 
                         <div className={classes.firstDepositButtons}>
-                            <Button className={classes.firstDepositPercentButton} onClick={firstDepositPercentCounter} value={0}>0%</Button>
-                            <Button className={classes.firstDepositPercentButton} onClick={firstDepositPercentCounter} value={0.1}>10%</Button>
-                            <Button className={classes.firstDepositPercentButton} onClick={firstDepositPercentCounter} value={0.15}>15%</Button>
-                            <Button className={classes.firstDepositPercentButton} onClick={firstDepositPercentCounter} value={0.2}>20%</Button>
-                            <Button className={classes.firstDepositPercentButton} onClick={firstDepositPercentCounter} value={0.25}>25%</Button>
-                            <Button className={classes.firstDepositPercentButton} onClick={firstDepositPercentCounter} value={0.3}>30%</Button>
+                            <Button className={styles.root} onClick={firstDepositPercentCounter} value={0}>0%</Button>
+                            <Button className={styles.root} onClick={firstDepositPercentCounter} value={0.1}>10%</Button>
+                            <Button className={styles.root} onClick={firstDepositPercentCounter} value={0.15}>15%</Button>
+                            <Button className={styles.root} onClick={firstDepositPercentCounter} value={0.2}>20%</Button>
+                            <Button className={styles.root} onClick={firstDepositPercentCounter} value={0.25}>25%</Button>
+                            <Button className={styles.root} onClick={firstDepositPercentCounter} value={0.3}>30%</Button>
                         </div>
                     </div>
 
                     <div className={classes.loanPeriod}>
                         <p>Срок кредита</p>
-                        <input className={classes.loanPeriodInput} type="number" onChange={handleLoanPeriodInputChange} value={loanPeriorValue} />
+                        <input className={classes.loanPeriodInput} type="number" onChange={handleLoanPeriodInputChange} value={loanPeriorValue} onBlur={isBelowLimit}/>
                         <Slider
                             min={1}
                             max={30}
@@ -113,16 +154,16 @@ export default function Calculator() {
                             value={loanPeriorValue}/>
 
                         <div className={classes.loanPeriodButtons}>
-                            <Button className={classes.loanPeriodButton} onClick={changeLoanPeriod} value={5}>5</Button>
-                            <Button className={classes.loanPeriodButton} onClick={changeLoanPeriod} value={10}>10</Button>
-                            <Button className={classes.loanPeriodButton} onClick={changeLoanPeriod} value={15}>15</Button>
-                            <Button className={classes.loanPeriodButton} onClick={changeLoanPeriod} value={20}>20</Button>
+                            <Button className={styles.root} onClick={changeLoanPeriod} value={5}>5</Button>
+                            <Button className={styles.root} onClick={changeLoanPeriod} value={10}>10</Button>
+                            <Button className={styles.root} onClick={changeLoanPeriod} value={15}>15</Button>
+                            <Button className={styles.root} onClick={changeLoanPeriod} value={20}>20</Button>
                         </div>
                     </div>
 
                     <div className={classes.interestRate}>
                         <p>Процентная ставка</p>
-                        <input className={classes.interestRateInput} type="number" value={interestRateValue} onChange={handleInterestRateInputChange} />
+                        <input className={classes.interestRateInput} type="number" value={interestRateValue} onChange={handleInterestRateInputChange} onBlur={isBelowLimit}/>
                         <Slider
                             min={1}
                             max={30}
@@ -132,11 +173,11 @@ export default function Calculator() {
                             value={interestRateValue} />
 
                         <div className={classes.loanPeriodButtons}>
-                            <Button className={classes.loanPeriodButton} onClick={changeInterestRate} value={4.5}>4,5%</Button>
-                            <Button className={classes.loanPeriodButton} onClick={changeInterestRate} value={6}>6%</Button>
-                            <Button className={classes.loanPeriodButton} onClick={changeInterestRate} value={7.5}>7,5%</Button>
-                            <Button className={classes.loanPeriodButton} onClick={changeInterestRate} value={9.1}>9,1%</Button>
-                            <Button className={classes.loanPeriodButton} onClick={changeInterestRate} value={10}>10%</Button>
+                            <Button className={styles.root} onClick={changeInterestRate} value={4.5}>4,5%</Button>
+                            <Button className={styles.root} onClick={changeInterestRate} value={6}>6%</Button>
+                            <Button className={styles.root} onClick={changeInterestRate} value={7.5}>7,5%</Button>
+                            <Button className={styles.root} onClick={changeInterestRate} value={9.1}>9,1%</Button>
+                            <Button className={styles.root} onClick={changeInterestRate} value={10}>10%</Button>
                         </div>
                     </div>
                 </div>
