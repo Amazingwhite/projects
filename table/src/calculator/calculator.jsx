@@ -69,15 +69,16 @@ export default function Calculator() {
 
     const handleEstateInputChange = (event) => {
         firstDepositValue >= +event.target.value - 500000 ? setFirstDepositValue(+event.target.value - 500000) : setFirstDepositValue(firstDepositValue);
-        setEstateValue(+event.target.value);
+        +event.target.value >= 99999999 ? setEstateValue(99999999) : setEstateValue(+event.target.value);
+        
     };
 
     const handleFirstDepositSliderChange = (event, newFirstDepositValue) => {
         setFirstDepositValue(newFirstDepositValue);
     };
 
-    const handleFirstDepositInputChange = (event) => {
-        setFirstDepositValue(+event.target.value);
+    const handleFirstDepositInputChange = (event) => { 
+        +event.target.value > estateValue - 500000 ? setFirstDepositValue(estateValue - 500000) : setFirstDepositValue(+event.target.value);
 
     };
 
@@ -90,7 +91,7 @@ export default function Calculator() {
     };
 
     const handleLoanPeriodInputChange = (event) => {
-        setLoanPeriorValue(+event.target.value);
+        +event.target.value > 30 ? setLoanPeriorValue(30) : setLoanPeriorValue(+event.target.value);
     };
 
     const changeLoanPeriod = (event) => {
@@ -102,7 +103,7 @@ export default function Calculator() {
     };
 
     const handleInterestRateInputChange = (event) => {
-        setInterestRateValue(+event.target.value);
+        +event.target.value > 30 ? setInterestRateValue(30):setInterestRateValue(+event.target.value);
     };
 
     const changeInterestRate = (event) => {
@@ -144,7 +145,7 @@ export default function Calculator() {
                             step={10000}
                             defaultValue={0}
                             onChange={handleFirstDepositSliderChange}
-                            value={firstDepositValue} />
+                            value={firstDepositValue <= estateValue - 500000 ? firstDepositValue : estateValue - 500000} />
 
                         <div className={classes.firstDepositButtons}>
                             <Button className={styles.sliderButton} onClick={firstDepositPercentCounter} value={0}>0%</Button>
