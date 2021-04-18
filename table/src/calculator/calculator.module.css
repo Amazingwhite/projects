@@ -1,8 +1,6 @@
-.calculator {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: flex-start;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
 
 .container {
@@ -11,7 +9,7 @@
     display: flex;
     justify-content: space-around;
     background-color: #f1f2f4;
-    margin: auto;
+    margin: 100px auto;
 }
 
 .leftPanel {
@@ -23,21 +21,14 @@
 
 .switchCalculator {
     display: flex;
-    flex-direction: row
+    flex-direction: row;
+    margin-top: 30px;
 }
 
 .rightPanel {
     width: 296px;
     display: flex;
     flex-direction: column;
-}
-
-.switchCalculatorButton {
-    flex-grow: 1;
-    font-size: 14px;
-    line-height: 22px;
-    color: #0468FF;
-    font-weight: 400;
 }
 
 .estateCost,
@@ -81,3 +72,25 @@
     background-color: rgba(21, 34, 66, 0.06);
 }
 
+.rightPanelElement {
+    margin: 6px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.rightPanelNumber {
+    color: #152242;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.monthlyPaymentCounter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.monthlyPaymentCounter h1 {
+    margin: 0;
+}
