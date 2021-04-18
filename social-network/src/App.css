@@ -1,0 +1,21 @@
+body {
+  background-color: rebeccapurple;
+}
+
+.app-wrapper {
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 1fr 5fr;
+  grid-template-areas: 
+  "h h"
+  "n c";
+  margin: 0 auto;
+  width: 1200px;
+}
+
+.app-wrapper-content {
+  grid-area: c;
+  background-color: rgb(63, 63, 184);
+}
+
+
