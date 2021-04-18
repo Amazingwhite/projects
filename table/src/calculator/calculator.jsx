@@ -21,7 +21,6 @@ const useStyles = makeStyles({
         fontSize: 14,
         font: 'Lato, Roboto, Arial, sans-serif',
         fontWeight: 'bold',
-        lineHeight: 22,
         '&:hover': {
             backgroundColor: '#0248b2'
         }
@@ -64,8 +63,19 @@ export default function Calculator() {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     };
 
-    const isValid = () => {
+    const isStartsWithZero = (event) => {
+        let arr = event.target.value.toString().split('');
+        if(arr[0] === "0" ) {
+            arr.shift();    
+            let str = arr.join('');   
+            str = Number.parseInt(str);     
+            event.target.value = str;   
+        }
+    }
+
+    const isValidEstateValue = (event) => {
         if (estateValue < 500000) setEstateValue(500000);
+        isStartsWithZero(event);
     };
 
     const handleEstateSliderChange = (event, newEstateValue) => {
@@ -127,8 +137,12 @@ export default function Calculator() {
 
                     <div className={classes.estateCost}>
                         <p>Стоимость недвижимости</p>
-                        <input className={classes.estateInput} type="number" inputMode='numeric' value={estateValue} onChange={handleEstateInputChange} 
-                        onBlur={isValid}/>
+                        <input className={classes.estateInput} 
+                               type="number" 
+                               inputMode='numeric' 
+                               value={estateValue} 
+                               onChange={handleEstateInputChange} 
+                               onBlur={isValidEstateValue}/>
                         <Slider
                             min={500000}
                             max={99999999}
@@ -145,7 +159,8 @@ export default function Calculator() {
                             type="number"
                             inputMode='numeric'
                             value={firstDepositValue}
-                            onChange={handleFirstDepositInputChange} />
+                            onChange={handleFirstDepositInputChange} 
+                            onBlur={isStartsWithZero}/>
                         <Slider
                             min={0}
                             max={estateValue - 500000}
@@ -166,7 +181,12 @@ export default function Calculator() {
 
                     <div className={classes.loanPeriod}>
                         <p>Срок кредита</p>
-                        <input className={classes.loanPeriodInput} type="number" inputMode='numeric' onChange={handleLoanPeriodInputChange} value={loanPeriorValue} />
+                        <input className={classes.loanPeriodInput} 
+                               type="number" 
+                               inputMode='numeric' 
+                               onChange={handleLoanPeriodInputChange} 
+                               value={loanPeriorValue} 
+                               onBlur={isStartsWithZero}/>
                         <Slider
                             min={1}
                             max={30}
@@ -185,7 +205,12 @@ export default function Calculator() {
 
                     <div className={classes.interestRate}>
                         <p>Процентная ставка</p>
-                        <input className={classes.interestRateInput} type="number" inputMode='numeric' value={interestRateValue} onChange={handleInterestRateInputChange} />
+                        <input className={classes.interestRateInput} 
+                               type="number" 
+                               inputMode='numeric' 
+                               value={interestRateValue} 
+                               onChange={handleInterestRateInputChange} 
+                               onBlur={isStartsWithZero}/>
                         <Slider
                             min={1}
                             max={30}
@@ -235,7 +260,7 @@ export default function Calculator() {
                             <p>{numberWithSpaces(minIncome)}</p>
                         </div>
                     </div>
-
+                    
                     <Button href='http://www.yandex.ru' variant='contained' className={styles.applyButton}>
                         Подать заявку онлайн
                     </Button>
