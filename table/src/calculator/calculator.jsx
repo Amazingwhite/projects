@@ -53,13 +53,19 @@ export default function Calculator() {
     let percents = Math.round((monthlyPayment*loanPeriodMonths - (estateValue-firstDepositValue)));
     let minIncome = Math.round(((estateValue - firstDepositValue + percents)/12)*1.667);
 
-    if (estateValue < 500000) setEstateValue(500000);
+
+
+    
     if (firstDepositValue < 0) setFirstDepositValue(0);
     if (loanPeriorValue < 1) setLoanPeriorValue(1);
     if (interestRateValue < 1) setInterestRateValue(1);
 
     const numberWithSpaces = (x) => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    };
+
+    const isValid = () => {
+        if (estateValue < 500000) setEstateValue(500000);
     };
 
     const handleEstateSliderChange = (event, newEstateValue) => {
@@ -121,7 +127,8 @@ export default function Calculator() {
 
                     <div className={classes.estateCost}>
                         <p>Стоимость недвижимости</p>
-                        <input className={classes.estateInput} type="number" inputMode='numeric' value={estateValue} onChange={handleEstateInputChange} />
+                        <input className={classes.estateInput} type="number" inputMode='numeric' value={estateValue} onChange={handleEstateInputChange} 
+                        onBlur={isValid}/>
                         <Slider
                             min={500000}
                             max={99999999}
