@@ -33,7 +33,7 @@ const useStyles = makeStyles({
         fontSize: 14,
         lineHeight: '22px'
     }
-})
+});
 
 export default function Calculator() {
 
@@ -44,17 +44,13 @@ export default function Calculator() {
     const [loanPeriorValue, setLoanPeriorValue] = useState(1);
     const [interestRateValue, setInterestRateValue] = useState(1);
     
-
     let monthlyRate = interestRateValue/12/100;
     let loanPeriodMonths = (loanPeriorValue*12);
     let totalBid = ((1 + monthlyRate)**loanPeriodMonths);
     let monthlyPayment = ((estateValue-firstDepositValue)*monthlyRate*(totalBid/(totalBid - 1)));
     let percents = Math.round((monthlyPayment*loanPeriodMonths - (estateValue-firstDepositValue)));
     let minIncome = Math.round(((estateValue - firstDepositValue + percents)/12)*1.667);
-
-
-
-    
+  
     if (firstDepositValue < 0) setFirstDepositValue(0);
     if (loanPeriorValue < 1) setLoanPeriorValue(1);
     if (interestRateValue < 1) setInterestRateValue(1);
@@ -64,14 +60,8 @@ export default function Calculator() {
     };
 
     const isStartsWithZero = (event) => {
-        let arr = event.target.value.toString().split('');
-        if(arr[0] === "0" ) {
-            arr.shift();    
-            let str = arr.join('');   
-            str = Number.parseInt(str);     
-            event.target.value = str;   
-        }
-    }
+        event.target.value = Number.parseInt(event.target.value.toString());
+    };
 
     const isValidEstateValue = (event) => {
         if (estateValue < 500000) setEstateValue(500000);
