@@ -1,8 +1,12 @@
 .activePage {
     color: red;
     font-weight: bold;
+}
+
+.inactivePage {
     cursor: pointer;
 }
-body {
-    word-break: break-all;
+
+.inactivePage:hover {
+    font-weight: bold;
 }

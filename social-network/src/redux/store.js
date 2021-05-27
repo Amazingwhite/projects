@@ -28,9 +28,6 @@ let store = {
 
         }
     },
-    _callSubscriber() {
-        console.log("GGG");
-    },
     subscribe(observer) {
         this._callSubscriber = observer;
     },

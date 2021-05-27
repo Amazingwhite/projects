@@ -2,7 +2,6 @@ import React from 'react';
 import Preloader from '../common/Preloader/Preloader';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import user from '../../assets/images/user.jpg'
-import ProfileStatus from './ProfileStatus';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 const Profile = (props) => {
@@ -16,12 +15,12 @@ const Profile = (props) => {
     return (
       <div>
         <div>
-        <img src={user} style= {{hegiht: '200px', width: '200px'}}/>
+        <img alt='' src={user} style= {{hegiht: '200px', width: '200px'}}/>
         <br />
         {props.profile.fullName + ' ' + props.profile.userId}
         <br/>
         <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
-        ava + description
+        avatar + description
       </div>
         <MyPostsContainer store={props.store} />
       </div>)
@@ -29,7 +28,7 @@ const Profile = (props) => {
     return (
       <div>
         <div>
-          <img src={props.profile.photos.large} />
+          <img alt='' src={props.profile.photos.large} />
           <br />
           {props.profile.fullName + ' ' + props.profile.userId}
           <br />

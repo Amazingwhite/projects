@@ -13,16 +13,16 @@ let Users = (props) => {
     return <div>
         <div>
             {pages.map(p => {
-                return <span className={props.currentPage === p && classes.activePage}
-                    onClick={() => { props.onPageChanged(p) }}>{p}</span>
+                return <span className={props.currentPage === p && classes.activePage || classes.inactivePage}
+                    onClick={() => { props.onPageChanged(p) }} >{`${p} `}</span>
             })}
         </div>
         {
-            props.users.map(u => <div >
+            props.users.map(u => <div>
                 <span>
                     <div>
                         <NavLink to={'/profile/' + u.id}>
-                            <img src={u.photos.small != null ? u.photos.small : userPhoto} width='250px' height='250px'></img>
+                            <img alt='' src={u.photos.small != null ? u.photos.small : userPhoto} width='250px' height='250px'></img>
                         </NavLink>
                     </div>
                     <div>
@@ -37,9 +37,9 @@ let Users = (props) => {
                     </div>
                 </span>
                 <span>
-                    <div>{u.name}</div>
-                    <div>{u.status}</div>
-                    <div>{u.id}</div>
+                    <div>{`Имя: ${u.name}`}</div>
+                    <div>{`Статус: ${u.status}`}</div>
+                    <div>{`ID: ${u.id}` } </div>
                 </span>
             </div>)}
     </div>
