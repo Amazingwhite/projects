@@ -10,7 +10,7 @@ let Users = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
-    return <div>
+    return (<>
         <div>
             {pages.map(p => {
                 return <span className={props.currentPage === p && classes.activePage || classes.inactivePage}
@@ -28,21 +28,22 @@ let Users = (props) => {
                     <div>
                         <div>
                             {u.followed
-                                ? <button disabled={props.followingInProgress.some( id => id === u.id)} 
-                                    onClick={() => {props.unfollow(u.id)}}>Unfollow</button>
+                                ? <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                    onClick={() => { props.unfollow(u.id) }}>Unfollow</button>
 
-                                : <button disabled={props.followingInProgress.some( id => id === u.id)} 
-                                    onClick={() => {props.follow(u.id)}}>Follow</button>}
+                                : <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                    onClick={() => { props.follow(u.id) }}>Follow</button>}
                         </div>
                     </div>
                 </span>
                 <span>
                     <div>{`Имя: ${u.name}`}</div>
                     <div>{`Статус: ${u.status}`}</div>
-                    <div>{`ID: ${u.id}` } </div>
+                    <div>{`ID: ${u.id}`} </div>
                 </span>
-            </div>)}
-    </div>
+            </div>)
+        }
+    </>)
 }
 
 export default Users;

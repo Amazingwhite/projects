@@ -76,7 +76,6 @@ export default function Calculator() {
     const handleEstateInputChange = (event) => {
         firstDepositValue >= +event.target.value - 500000 ? setFirstDepositValue(+event.target.value - 500000) : setFirstDepositValue(firstDepositValue);
         +event.target.value >= 99999999 ? setEstateValue(99999999) : setEstateValue(+event.target.value);
-        
     };
 
     const handleFirstDepositSliderChange = (event, newFirstDepositValue) => {
@@ -85,7 +84,6 @@ export default function Calculator() {
 
     const handleFirstDepositInputChange = (event) => { 
         +event.target.value > estateValue - 500000 ? setFirstDepositValue(estateValue - 500000) : setFirstDepositValue(+event.target.value);
-
     };
 
     const firstDepositPercentCounter = (event) => {
@@ -258,4 +256,3 @@ export default function Calculator() {
             </div>
     );
 }
-

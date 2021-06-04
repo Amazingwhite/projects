@@ -22,7 +22,7 @@ const ProfileStatusWithHooks = (props) => {
     }
 
     return (
-        <div>
+        <>
             {!editMode && 
             <div>
                 <span onDoubleClick={activateEditMode}>
@@ -38,7 +38,7 @@ const ProfileStatusWithHooks = (props) => {
                 <br />
                 <button onClick={disableEditMode}>Set status</button>
             </div>}
-        </div>
+        </>
     )
 }
 

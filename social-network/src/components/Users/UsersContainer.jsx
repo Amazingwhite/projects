@@ -43,7 +43,7 @@ const UsersContainer = (props) => {
     }
 
     return (
-        <div>
+        <>
             {props.isFetching ? <Preloader /> : null}
             <Users totalUsersCount={props.totalUsersCount}
                 pageSize={props.pageSize}
@@ -54,7 +54,7 @@ const UsersContainer = (props) => {
                 unfollow={props.unfollow}
                 followingInProgress={props.followingInProgress}
             />
-        </div>)
+        </>)
 }
 
 let mapStateToProps = (state) => {

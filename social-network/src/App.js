@@ -14,8 +14,6 @@ import { initializeApp } from './redux/appReducer';
 import { connect } from 'react-redux';
 import Preloader from './components/common/Preloader/Preloader';
 
-// App на классах
-
 // class App extends Component {
 //        componentDidMount() {
 //               this.props.initializeApp();

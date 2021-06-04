@@ -19,7 +19,9 @@ const AddPostForm = (props) => {
             <button >Add post</button>  
         </form>
     )
+    
 }
+
 
 const AddPostReduxForm = reduxForm({ form: "profileAddPost" })(AddPostForm)
 

@@ -30,19 +30,20 @@ const ProfileContainer = (props) => {
         let userId = props.match.params.userId;
         if(!userId) {
             userId = props.authorizedUserId
+            console.log(1)
         } 
+        console.log(2)
         props.getUserProfile(userId);
         props.getStatus(userId);
-        console.log('component did mount!')
     }, [])
     
     return (
-        <div>
+        <>
             <Profile {...props}
                 profile={props.profile}
                 status={props.status}
                 updateStatus={props.updateStatus} />
-        </div>
+        </>
     )
 }
 

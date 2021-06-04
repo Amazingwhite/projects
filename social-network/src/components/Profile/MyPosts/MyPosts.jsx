@@ -9,11 +9,11 @@ const MyPosts = (props) => {
 
   let addNewPost = (values) => {
     props.addPost(values.newPostText);
-    console.log(values.newPostText)
+    console.log(values.newPostText);
   }
 
   return (
-    <div>
+    <>
       My posts
       <div>
         <AddPostReduxForm onSubmit={addNewPost}/>
@@ -21,7 +21,7 @@ const MyPosts = (props) => {
       <div className={classes.posts}>
         {postsElements}
       </div>
-    </div>
+    </>
   )
 }
 
