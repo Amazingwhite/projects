@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import { useMessage } from '../hooks/errorMessage.hook';
 import { useHttp } from '../hooks/http.hook';
 
 export const Auth = () => {
+    const auth = useContext(AuthContext)
     const errorMessage = useMessage()
     const { loading, error, request, clearError } = useHttp()
     const [form, setForm] = useState({
@@ -22,7 +24,14 @@ export const Auth = () => {
     const registerHandler = async () => {
         try {
             const data = await request('api/auth/register', 'POST', { ...form })
-            
+            errorMessage(data.message)
+        } catch (e) { }
+    }
+
+    const loginHandler = async () => {
+        try {
+            const data = await request('api/auth/login', 'POST', { ...form })
+            auth.login(data.token, data.userId)
         } catch (e) { }
     }
 
@@ -57,7 +66,7 @@ export const Auth = () => {
                         </div>
                     </div>
                     <div className="card-action">
-                        <button className="btn waves-effect yellow darken-4" style={{ marginRight: 10 }} disabled={loading}>Войти</button>
+                        <button className="btn waves-effect yellow darken-4" style={{ marginRight: 10 }} onClick={loginHandler} disabled={loading}>Войти</button>
                         <button className="btn waves-effect yellow darken-4" onClick={registerHandler} disabled={loading}>Регистрация</button>
                     </div>
 
