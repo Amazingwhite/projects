@@ -17,7 +17,7 @@ export const Auth = () => {
         clearError()
     }, [error, errorMessage, clearError])
 
-    useEffect( () => {
+    useEffect(() => {
         window.M.updateTextFields()
     }, [])
 
@@ -34,7 +34,7 @@ export const Auth = () => {
 
     const loginHandler = async () => {
         try {
-            const data = await request('api/auth/login', 'POST', { ...form })
+            const data = await request('/api/auth/login', 'POST', { ...form })
             auth.login(data.token, data.userId)
         } catch (e) { }
     }

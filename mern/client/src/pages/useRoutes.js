@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Auth } from './Auth';
-import {CreatePage} from './CreatePage';
+import { CreatePage } from './CreatePage';
 import { DetailPage } from './DetailPage';
-import { Somepage3 } from './Somepage3';
+import { LinksPage } from './LinksPage';
 
 export const useRoutes = (isAuth) => {
     if (isAuth) {
@@ -15,8 +15,8 @@ export const useRoutes = (isAuth) => {
                 <Route path="/detail/:id">
                     <DetailPage />
                 </Route>
-                <Route path='/somepage3'>
-                    <Somepage3 />
+                <Route path='/links' exact>
+                    <LinksPage />
                 </Route>
                 <Redirect to='/create' />
             </Switch>
