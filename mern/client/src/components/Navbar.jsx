@@ -15,11 +15,11 @@ export const Navbar = () => {
     return (
         <nav>
             <nav>
-                <div class="nav-wrapper">
-                    <span href="#" class="brand-logo">Logo</span>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><NavLink to="/somepage1">Sass</NavLink></li>
-                        <li><NavLink to="/somepage2">Components</NavLink></li>
+                <div className="nav-wrapper blue-grey darken-1">
+                    <span href="#" className="brand-logo ">Logo</span>
+                    <ul id="nav-mobile" className="right hide-on-med-and-down">
+                        <li><NavLink to="/somepage1">Создать ссылку</NavLink></li>
+                        <li><NavLink to="/somepage2">Sueta</NavLink></li>
                         <li><a href="/" onClick={logoutHandler}>Выйти</a></li>
                     </ul>
                 </div>
