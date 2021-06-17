@@ -40,7 +40,7 @@ export const Auth = () => {
     }
 
     return (
-        <div className="row">
+        <div className="row ">
             <div className="col s6 offset-s3">
                 <h1>Курсовая работа</h1>
                 <div className="card blue-grey darken-1">
@@ -54,8 +54,9 @@ export const Auth = () => {
                                     id="email"
                                     type="text"
                                     name="email"
+                                    value={form.email}
                                     onChange={changeHandler} />
-                                <label htmlFor="email">E-mail или имя пользователя</label>
+                                <label htmlFor="email">E-mail</label>
                             </div>
 
                             <div className="input-field">
@@ -64,6 +65,7 @@ export const Auth = () => {
                                     id="password"
                                     type="password"
                                     name="password"
+                                    value={form.password}
                                     onChange={changeHandler} />
                                 <label htmlFor="password">Пароль</label>
                             </div>

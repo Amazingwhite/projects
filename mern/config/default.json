@@ -1,5 +1,6 @@
 {
     "port": 5000,
     "jwtSecret": "amazingwhite mern project",
+    "baseUrl": "http://localhost5000",
     "mongoUri": "mongodb+srv://Artem:exhumer601@cluster0.iczef.mongodb.net/app?retryWrites=true&w=majority"
 }
