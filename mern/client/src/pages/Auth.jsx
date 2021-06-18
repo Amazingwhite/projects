@@ -42,7 +42,7 @@ export const Auth = () => {
     return (
         <div className="row ">
             <div className="col s6 offset-s3">
-                <h1>Курсовая работа</h1>
+                <h1>ShortenLink</h1>
                 <div className="card blue-grey darken-1">
 
                     <div className="card-content white-text">
