@@ -1,6 +1,7 @@
 const express = require('express');
 const config = require('config');
 const mongoose = require('mongoose');
+const Link = require('./models/Link')
 
 const app = express();
 
