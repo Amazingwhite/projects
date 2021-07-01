@@ -1,18 +1,24 @@
-import { Route } from 'react-router-dom';
-import { Login } from '../src/Login/Login';
-import { BrowserRouter } from 'react-router-dom';
+import Login from './components/Login/Login';
+import { Header } from './components/Header/Header';
+import { MainPage } from './components/MainPage/MainPage';
 import './App.css';
 
+
 function App() {
-  return (
-    <>
-    
-      <BrowserRouter>
-        <Route path='/login' 
-                render={() => <Login />} />
-      </BrowserRouter>
-    </>
-  );
+
+  let isAuth = false
+
+  if (isAuth) {
+    return (
+      <>
+        <Header />
+        <MainPage />
+      </>)
+  }
+  return (<Login />)
+
+
 }
+
 
 export default App;

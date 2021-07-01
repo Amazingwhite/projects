@@ -1,11 +1,13 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import 'antd/dist/antd.css';
+import { login } from '../../redux/authReducer';
+import { connect } from 'react-redux';
 
-export const Login = () => {
+  const Login = (props) => {
   const onFinish = (values) => {
     console.log('Success:', values);
   };
-
+  console.log(props)
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
@@ -26,12 +28,12 @@ export const Login = () => {
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
-        label="Username"
-        name="username"
+        label="E-mail"
+        name="e-mail"
         rules={[
           {
             required: true,
-            message: 'Please input your username!',
+            message: 'Please input your e-mail!',
           },
         ]}
       >
@@ -76,8 +78,6 @@ export const Login = () => {
   );
 };
 
-// const mapStateToProps = (state) => {
-//     isAuth: state.auth.isAuth
-// }
+export default connect(null, { login })(Login);
 
-// export default
+
