@@ -3,7 +3,6 @@ import { AuthContext } from '../context/AuthContext';
 import { useHttp } from '../hooks/http.hook';
 import { useHistory } from 'react-router-dom';
 
-
 export const CreatePage = () => {
     const history = useHistory()
     const auth = useContext(AuthContext);
@@ -64,9 +63,7 @@ export const CreatePage = () => {
                     <td>Вы можете отслеживать статистику ваших ссылок. Просто перейдите на страницу ссылки для дополнительно информации</td>
                     <td>В отличие от закрытого проекта от google — ShortenLink поддерживает действительно короткие адреса </td>
                     
-                </tr>
-
-                
+                </tr>               
 
             </tbody>
             </table>

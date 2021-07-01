@@ -154,12 +154,3 @@ document.addEventListener('keydown', (e) => {
 
     }
 });
-
-for(var i =0; i <=10; i++) {
-    ((j) => {
-        setTimeout(() => {
-            console.log(j);
-        }, 0)
-    })(i)
-}
-

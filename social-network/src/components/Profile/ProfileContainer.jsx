@@ -30,9 +30,7 @@ const ProfileContainer = (props) => {
         let userId = props.match.params.userId;
         if(!userId) {
             userId = props.authorizedUserId
-            console.log(1)
         } 
-        console.log(2)
         props.getUserProfile(userId);
         props.getStatus(userId);
     }, [])

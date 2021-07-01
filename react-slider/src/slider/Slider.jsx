@@ -5,12 +5,12 @@ import slide2 from '../img/Slide2.jpg';
 import slide3 from '../img/Slide3.jpg';
 
 const images = [
-    <img key={slide1} src={slide1} alt='first' width='450px' height='450px'/>,
-    <img key={slide2} src={slide2} alt='second' width='450px' height='450px'/>,
-    <img key={slide3} src={slide3} alt='third' width='450px' height='450px'/>
+    <img key={slide1} src={slide1} alt='first' width='450px' height='450px' />,
+    <img key={slide2} src={slide2} alt='second' width='450px' height='450px' />,
+    <img key={slide3} src={slide3} alt='third' width='450px' height='450px' />
 ]
 
-export default function Slider() {
+const Slider = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     useEffect(() => {
@@ -39,3 +39,5 @@ export default function Slider() {
     )
 }
 
+
+export default Slider

@@ -54,14 +54,15 @@ import Preloader from './components/common/Preloader/Preloader';
 // }
 
 const App = (props) => {
-
        useEffect(() => {
               props.initializeApp();
               console.log('component mounted')
        }, [])
 
        if (!props.initialized) {
+              
               return <Preloader />
+
        }
 
        return (
