@@ -1,6 +1,6 @@
 import { Carousel } from 'antd';
 
-export let MainPage = () => {
+let MainPage = (props) => {
     const contentStyle = {
         height: '360px',
         color: '#fff',
@@ -26,3 +26,5 @@ export let MainPage = () => {
         </Carousel>
     )
 }
+
+export default MainPage;

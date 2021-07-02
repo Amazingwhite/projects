@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
     props.login(values.email, values.password)
     
   };
+
   
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);

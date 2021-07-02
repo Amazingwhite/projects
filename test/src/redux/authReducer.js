@@ -26,7 +26,7 @@ const authReducer = (state = initialState, action) => {
 export const setUserData = (email, password, isAuth) => ({ type: CHECK_DATA, payload: { email, password, isAuth } })
 
 export const login = (email, password) => (dispatch) => {
-    loginAPI.login(email, password)
+    return loginAPI.login(email, password)
         .then(response => {
             if (response.status === 200) {
                 // debugger
