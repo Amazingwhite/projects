@@ -3,14 +3,14 @@ import 'antd/dist/antd.css';
 import { login } from '../../redux/authReducer';
 import { connect } from 'react-redux';
 
-  const Login = (props) => {
+const Login = (props) => {
+  
+
   const onFinish = (values) => {
     console.log('Success:', values);
     props.login(values.email, values.password)
-    
   };
 
-  
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
@@ -19,13 +19,13 @@ import { connect } from 'react-redux';
     <Form
       name="basic"
       labelCol={{
-        span: 8,
+        span: 8
       }}
       wrapperCol={{
-        span: 7,
+        span: 7
       }}
       initialValues={{
-        remember: true,
+        remember: true
       }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
@@ -75,6 +75,10 @@ import { connect } from 'react-redux';
       >
         <Button type="primary" htmlType="submit">
           Submit
+        </Button>
+
+        <Button>
+          Registration
         </Button>
       </Form.Item>
     </Form>
