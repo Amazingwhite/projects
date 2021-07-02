@@ -12,16 +12,16 @@ export let MainPage = () => {
     return (
         <Carousel autoplay>
             <div>
-                <h3 style={contentStyle}>Поздравляю</h3>
+                <h3 style={contentStyle}>Поздравляем вы успешно Авторизованы</h3>
             </div>
             <div>
-                <h3 style={contentStyle}>Вы</h3>
+                <h3 style={contentStyle}>Ура ура</h3>
             </div>
             <div>
-                <h3 style={contentStyle}>Успешно</h3>
+                <h3 style={contentStyle}>Переведите 0.042421 BTC на этот счет</h3>
             </div>
             <div>
-                <h3 style={contentStyle}>Авторизованы</h3>
+                <h3 style={contentStyle}>Или мы вас разлогиним</h3>
             </div>
         </Carousel>
     )

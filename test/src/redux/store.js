@@ -1,12 +1,14 @@
-import { combineReducers, createStore } from "redux";
-import {reducer as formReducer} from "redux-form";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import authReducer from "./authReducer";
+import thunkMiddleware from "redux-thunk" 
+import appReducer from "./appReducer";
 
 let reducers = combineReducers({
-    auth: authReducer
+    auth: authReducer,
+    app: appReducer
 })
 
-let store = createStore(reducers)
+let store = createStore(reducers, applyMiddleware(thunkMiddleware))
 
 window.store = store
 

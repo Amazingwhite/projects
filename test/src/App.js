@@ -2,16 +2,15 @@ import Login from './components/Login/Login';
 import { Header } from './components/Header/Header';
 import { MainPage } from './components/MainPage/MainPage';
 import './App.css';
+import { connect } from 'react-redux';
+import { logout } from './redux/authReducer';
 
 
-function App() {
-
-  let isAuth = false
-
-  if (isAuth) {
+function App(props) {
+  if (props.isAuth) {
     return (
       <>
-        <Header />
+        <Header logout={props.logout}/>
         <MainPage />
       </>)
   }
@@ -20,5 +19,8 @@ function App() {
 
 }
 
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth
+});
 
-export default App;
+export default connect(mapStateToProps, { logout })(App);

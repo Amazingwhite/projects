@@ -6,8 +6,10 @@ import { connect } from 'react-redux';
   const Login = (props) => {
   const onFinish = (values) => {
     console.log('Success:', values);
+    props.login(values.email, values.password)
+    
   };
-  console.log(props)
+  
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
@@ -28,8 +30,8 @@ import { connect } from 'react-redux';
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
-        label="E-mail"
-        name="e-mail"
+        label="Email"
+        name="email"
         rules={[
           {
             required: true,
