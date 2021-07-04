@@ -1,32 +1,30 @@
 import Login from './components/Login/Login';
 import { Header } from './components/Header/Header';
-import  MainPage  from './components/MainPage/MainPage';
+import { Register } from './components/Register/Register';
+import MainPage from './components/MainPage/MainPage';
 import './App.css';
 import { connect, useDispatch } from 'react-redux';
-import { logout, setIsToken } from './redux/authReducer';
+import { setIsToken } from './redux/authReducer';
 import { useEffect } from 'react';
+import { Route } from 'react-router-dom';
 
 function App(props) {
 
   const dispatch = useDispatch();
 
-  useEffect( () => {
+  useEffect(() => {
     dispatch(setIsToken(localStorage.token))
   }, [])
 
-  if (props.isAuth) {
-    return (
-      <>
-        <Header/>
-        <MainPage />
-      </>)
-  }
+  return (
+    <>
+      <Header />
+      <Route path='/mainpage' component={MainPage} />
+      <Route path='/registration' component={Register} />
+      <Route path='/login' component={Login} />
+    </>
+  )
 
-  return (<Login />)
-
-//login, registration, mainpage
-
-    
 }
 
 const mapStateToProps = (state) => ({

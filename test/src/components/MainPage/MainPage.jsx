@@ -1,6 +1,10 @@
 import { Carousel } from 'antd';
+import { Redirect } from 'react-router';
 
 let MainPage = (props) => {
+    if(!localStorage.token) {
+        return( <Redirect to='/login'/> )
+    }
     const contentStyle = {
         height: '360px',
         color: '#fff',
@@ -16,12 +20,6 @@ let MainPage = (props) => {
             </div>
             <div>
                 <h3 style={contentStyle}>Ура ура</h3>
-            </div>
-            <div>
-                <h3 style={contentStyle}>Переведите 0.042421 BTC на этот счет</h3>
-            </div>
-            <div>
-                <h3 style={contentStyle}>Или мы вас разлогиним</h3>
             </div>
         </Carousel>
     )

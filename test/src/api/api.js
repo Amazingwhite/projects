@@ -7,17 +7,14 @@ const instance = axios.create({
 export const loginAPI = {
 
     login(email, password) {
-        return instance.post(`api/login`, {email, password})
+        return instance.post(`api/login`, { email, password })
             .then(response => {
-                
-                console.log(response)
                 return response
             })
     },
     logout() {
         return instance.delete(`api/login`)
             .then(response => {
-                
                 return response
             });
     }

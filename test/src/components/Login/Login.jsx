@@ -2,12 +2,16 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import 'antd/dist/antd.css';
 import { login } from '../../redux/authReducer';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 
 const Login = (props) => {
-  
+  console.log(localStorage.token)
 
+  if(localStorage.token) {
+    return <Redirect to='/mainpage'/>
+  }
+  
   const onFinish = (values) => {
-    console.log('Success:', values);
     props.login(values.email, values.password)
   };
 
