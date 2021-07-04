@@ -1,4 +1,5 @@
 import { loginAPI } from "../api/api"
+import { registerAPI } from "../api/api"
 const CHECK_DATA = "CHECK_DATA"
 const IS_TOKEN = "IS_TOKEN"
 
@@ -23,7 +24,7 @@ const authReducer = (state = initialState, action) => {
             return  {
                 ...state,
                 isAuth: true
-            }}
+            }} else break
         }
 
         default: return state;
@@ -53,6 +54,13 @@ export const logout = () => (dispatch) => {
                 window.localStorage.removeItem('token')
                 dispatch(setUserData('', '', false))
             }
+        })
+}
+
+export const registration = (email, password) => (dispatch) => {
+    return registerAPI.registration(email, password)
+        .then(response => {
+            return response
         })
 }
 

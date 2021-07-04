@@ -1,18 +1,25 @@
+import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import 'antd/dist/antd.css';
 import { login } from '../../redux/authReducer';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
-const Login = (props) => {
-  console.log(localStorage.token)
+let Login = (props) => {
+  const history = useHistory()
+  const dispatch = useDispatch()
+
+  let redirToReg = () => {
+    history.push('/registration')
+  }
 
   if(localStorage.token) {
     return <Redirect to='/mainpage'/>
   }
   
   const onFinish = (values) => {
-    props.login(values.email, values.password)
+    dispatch(login(values.email, values.password))
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -20,6 +27,8 @@ const Login = (props) => {
   };
 
   return (
+    <>
+    <h1>Login page</h1>
     <Form
       name="basic"
       labelCol={{
@@ -81,14 +90,15 @@ const Login = (props) => {
           Submit
         </Button>
 
-        <Button>
+        <Button onClick={redirToReg}>
           Registration
         </Button>
       </Form.Item>
     </Form>
+    </>
   );
 };
 
-export default connect(null, { login })(Login);
+export default Login;
 
 

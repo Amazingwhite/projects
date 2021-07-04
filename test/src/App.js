@@ -1,15 +1,15 @@
 import Login from './components/Login/Login';
-import { Header } from './components/Header/Header';
-import { Register } from './components/Register/Register';
+import Header from './components/Header/Header';
+import Register from './components/Register/Register';
 import MainPage from './components/MainPage/MainPage';
 import './App.css';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setIsToken } from './redux/authReducer';
 import { useEffect } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 function App(props) {
-
+  const isAuth = useSelector(state => state.auth.isAuth);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,17 +18,13 @@ function App(props) {
 
   return (
     <>
-      <Header />
+      {isAuth && <Header />}
+      <Redirect from='/' to='/login' />
       <Route path='/mainpage' component={MainPage} />
       <Route path='/registration' component={Register} />
       <Route path='/login' component={Login} />
     </>
   )
-
 }
 
-const mapStateToProps = (state) => ({
-  isAuth: state.auth.isAuth
-});
-
-export default connect(mapStateToProps, null)(App);
+export default App;

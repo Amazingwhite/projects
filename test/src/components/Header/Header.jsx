@@ -4,8 +4,7 @@ import { PageHeader } from 'antd';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/authReducer';
 
-export let Header = () => {
-
+let Header = (props) => {
   const dispatch = useDispatch();
 
   return (
@@ -14,11 +13,13 @@ export let Header = () => {
         className="site-page-header"
         title="Авторизация выполнена"
         subTitle="Вы выиграли 1 000 000"
-        style={{display: 'flex', justifyContent: 'space-between'}}
+        style={{ display: 'flex', justifyContent: 'space-between' }}
       >
-      <Button type="primary" onClick={() => dispatch(logout())}>Logout</Button>
+        <Button type="primary" onClick={() => dispatch(logout())}>Logout</Button>
 
       </PageHeader>
     </>
   )
 }
+
+export default Header;

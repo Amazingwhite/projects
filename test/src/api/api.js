@@ -19,3 +19,13 @@ export const loginAPI = {
             });
     }
 }
+
+export const registerAPI = {
+
+    registration(email, password) {
+        return instance.post(`api/register`, {email, password})
+            .then(response => {
+                return response
+            })
+    }
+}
