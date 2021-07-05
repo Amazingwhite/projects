@@ -24,9 +24,8 @@ const authReducer = (state = initialState, action) => {
             return  {
                 ...state,
                 isAuth: true
-            }} else break
+            }} 
         }
-
         default: return state;
     }
 
@@ -39,7 +38,6 @@ export const login = (email, password) => (dispatch) => {
     return loginAPI.login(email, password)
         .then(response => {
             if (response.status === 200) {
-                // debugger
                 window.localStorage.setItem('token', response.data.token)
                 dispatch(setUserData(email, password, true))
             }
@@ -47,7 +45,6 @@ export const login = (email, password) => (dispatch) => {
 }
 
 export const logout = () => (dispatch) => {
-    // debugger
     loginAPI.logout()
         .then(response => {
             if (response.status === 204) {

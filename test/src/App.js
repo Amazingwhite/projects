@@ -1,7 +1,7 @@
 import Login from './components/Login/Login';
 import Header from './components/Header/Header';
 import Register from './components/Register/Register';
-import MainPage from './components/MainPage/MainPage';
+import UsersContainer from './components/Users/UsersContainer';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsToken } from './redux/authReducer';
@@ -20,7 +20,7 @@ function App(props) {
     <>
       {isAuth && <Header />}
       <Redirect from='/' to='/login' />
-      <Route path='/mainpage' component={MainPage} />
+      <Route path='/mainpage' component={UsersContainer} />
       <Route path='/registration' component={Register} />
       <Route path='/login' component={Login} />
     </>

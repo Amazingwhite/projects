@@ -20,7 +20,6 @@ export const initializedSuccess = () => ({ type: INITIALIZED_SUCCESS });
 
 export const initializeApp = () => (dispatch) => {
     dispatch(initializedSuccess)
-    // debugger
 }
 
 export default appReducer
