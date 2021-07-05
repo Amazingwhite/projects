@@ -11,11 +11,11 @@ let Login = (props) => {
   const dispatch = useDispatch()
 
   let redirToReg = () => {
-    history.push('/userslist')
+    history.push('/registration')
   }
 
   if(localStorage.token) {
-    return <Redirect to='/userslist'/>
+    return <Redirect to='/nav'/>
   }
   
   const onFinish = (values) => {

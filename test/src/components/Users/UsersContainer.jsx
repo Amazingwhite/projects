@@ -4,28 +4,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import { requestPages, requestUsers } from '../../redux/usersReducer';
 import { useEffect } from 'react';
 import Users from './Users'
-import { useParams } from 'react-router-dom';
+import { useParams, withRouter } from 'react-router-dom';
 
 let UsersContainer =  (props) =>  {
     const dispatch = useDispatch()
     const usersData = useSelector(state => state.users)
-    const usersListNumber = useSelector(state => state.users.pagesInfo.page)
 
+    const { pageNumber } = useParams()
     const getData = (i) => {
         dispatch(requestUsers(i))
         dispatch(requestPages(i))
     }
     
-    const { page } = useParams()
-    
     useEffect( () => {
-        getData(1)
+        getData(pageNumber)
     }, [])
 
     if (!localStorage.token) {
         return (<Redirect to='/login' />)
     }
-
     const tableData = usersData.users.map(i => {
         return {
             key: i.id,
@@ -41,9 +38,12 @@ let UsersContainer =  (props) =>  {
             <Users tableData={tableData}
                    usersData={usersData}
                    getData={getData}
-                   pageNumber={page}/>
+                   pageNumber={pageNumber}/>
         </>
+        
     )
 }
+
+
 
 export default UsersContainer;

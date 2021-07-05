@@ -4,12 +4,7 @@ const SET_PAGES = "SET_PAGES"
 
 let initialState = {
     pagesInfo: {},
-    users: [],
-    // id: 0,
-    // email: "",
-    // first_name: "",
-    // last_name: "",
-    // avatar: ""
+    users: []
 }
 
 const usersReducer = (state = initialState, action) => {
