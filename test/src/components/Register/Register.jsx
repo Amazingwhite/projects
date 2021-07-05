@@ -9,13 +9,12 @@ let Register = (props) => {
     const dispatch = useDispatch();
 
     if (localStorage.token) {
-        return <Redirect to='/mainpage' />
+        return <Redirect to='/userslist' />
     }
 
     const onFinish = (values) => {
         dispatch(registration(values.email, values.password))
         dispatch(login(values.email, values.password))
-        console.log(values)
     };
 
     const onFinishFailed = (errorInfo) => {

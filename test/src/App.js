@@ -11,16 +11,17 @@ import { Route, Redirect } from 'react-router-dom';
 function App(props) {
   const isAuth = useSelector(state => state.auth.isAuth);
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     dispatch(setIsToken(localStorage.token))
   }, [])
-
+  
   return (
     <>
       {isAuth && <Header />}
       <Redirect from='/' to='/login' />
-      <Route path='/mainpage' component={UsersContainer} />
+      <Route path='/userslist/:page' component={UsersContainer} />
       <Route path='/registration' component={Register} />
       <Route path='/login' component={Login} />
     </>

@@ -1,24 +1,32 @@
 import React from 'react'
 import { Redirect } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { requestUsers } from '../../redux/usersReducer';
+import { requestPages, requestUsers } from '../../redux/usersReducer';
 import { useEffect } from 'react';
 import Users from './Users'
+import { useParams } from 'react-router-dom';
 
 let UsersContainer =  (props) =>  {
     const dispatch = useDispatch()
+    const usersData = useSelector(state => state.users)
+    const usersListNumber = useSelector(state => state.users.pagesInfo.page)
+
+    const getData = (i) => {
+        dispatch(requestUsers(i))
+        dispatch(requestPages(i))
+    }
+    
+    const { page } = useParams()
     
     useEffect( () => {
-        dispatch(requestUsers(2))
+        getData(1)
     }, [])
-
-    const usersData = useSelector(state => state.users)
 
     if (!localStorage.token) {
         return (<Redirect to='/login' />)
     }
 
-    const data = usersData.users.map(i => {
+    const tableData = usersData.users.map(i => {
         return {
             key: i.id,
             firstName: i.first_name,
@@ -27,9 +35,13 @@ let UsersContainer =  (props) =>  {
             avatar: i.avatar
         }
     })
+    
     return (
         <>
-            <Users data={data}/>
+            <Users tableData={tableData}
+                   usersData={usersData}
+                   getData={getData}
+                   pageNumber={page}/>
         </>
     )
 }
