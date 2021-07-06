@@ -1,10 +1,11 @@
 import React from 'react';
-import { Table, Button } from 'antd';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Table } from 'antd';
+import { useHistory } from 'react-router-dom';
 
 let Users = (props) => {
     const { Column } = Table;
     const history = useHistory()
+    console.log(props)
 
     return (
         <>
@@ -12,9 +13,10 @@ let Users = (props) => {
                 dataSource={props.tableData} 
                 pagination={
                     {
+                        defaultCurrent: props.pageNumber,
+                        current: props.usersData.pageInfo?.page,
                         pageSize: props.usersData.pagesInfo.per_page,
                         total: props.usersData.pagesInfo.total,
-                        current: props.pageNumber,
                         onChange: (i) => {
                             history.push(`/userslist/page${i}`)
                             props.getData(i)

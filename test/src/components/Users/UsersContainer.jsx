@@ -1,5 +1,4 @@
 import React from 'react'
-import { Redirect } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestPages, requestUsers } from '../../redux/usersReducer';
 import { useEffect } from 'react';
