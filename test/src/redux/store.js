@@ -3,11 +3,13 @@ import authReducer from "./authReducer";
 import thunkMiddleware from "redux-thunk" 
 import appReducer from "./appReducer";
 import usersReducer from "./usersReducer";
+import profileReducer from "./profileReducer";
 
 let reducers = combineReducers({
     auth: authReducer,
     app: appReducer,
-    users: usersReducer
+    users: usersReducer,
+    profile: profileReducer
 })
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware))

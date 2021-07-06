@@ -20,9 +20,6 @@ let UsersContainer =  (props) =>  {
         getData(pageNumber)
     }, [])
 
-    if (!localStorage.token) {
-        return (<Redirect to='/login' />)
-    }
     const tableData = usersData.users.map(i => {
         return {
             key: i.id,
@@ -37,7 +34,8 @@ let UsersContainer =  (props) =>  {
         <>
             <Users tableData={tableData}
                    usersData={usersData}
-                   getData={getData}/>
+                   getData={getData}
+                   pageNumber={pageNumber}/>
         </>
         
     )

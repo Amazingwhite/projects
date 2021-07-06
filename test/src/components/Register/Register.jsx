@@ -9,7 +9,7 @@ let Register = (props) => {
     const dispatch = useDispatch();
 
     if (localStorage.token) {
-        return <Redirect to='/userslist/1' />
+        return <Redirect to='/userslist/page1' />
     }
 
     const onFinish = (values) => {

@@ -2,6 +2,7 @@ import Login from './components/Login/Login';
 import Header from './components/Header/Header';
 import Register from './components/Register/Register';
 import UsersContainer from './components/Users/UsersContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsToken } from './redux/authReducer';
@@ -19,7 +20,9 @@ function App(props) {
   return (
     <>
       {isAuth && <Header />}
-      <Route path='/userslist/:pageNumber?' component={UsersContainer} />
+      {!localStorage.token && <Redirect to='/login' />}
+      <Route path='/profile/:userId?' component={ProfileContainer} />
+      <Route path='/userslist/page:pageNumber?' component={UsersContainer} />
       <Route path='/registration' component={Register} />
       <Route path='/login' component={Login} />
     </>

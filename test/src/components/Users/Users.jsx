@@ -1,6 +1,6 @@
 import React from 'react';
-import { Table } from 'antd';
-import { useHistory } from 'react-router-dom';
+import { Table, Button } from 'antd';
+import { Redirect, useHistory } from 'react-router-dom';
 
 let Users = (props) => {
     const { Column } = Table;
@@ -14,12 +14,20 @@ let Users = (props) => {
                     {
                         pageSize: props.usersData.pagesInfo.per_page,
                         total: props.usersData.pagesInfo.total,
+                        current: props.pageNumber,
                         onChange: (i) => {
-                            history.push(`/userslist/${i}`)
+                            history.push(`/userslist/page${i}`)
                             props.getData(i)
                         }
                     }
                 }
+                onRow={(i)=> {
+                    return {
+                        onClick: () => {
+                            history.push(`/profile/${i.key}`)
+                        }
+                    }
+                }}
             >
                 <Column title="First Name" dataIndex="firstName" key="firstName" />
                 <Column title="Last Name" dataIndex="lastName" key="lastName" /> 
