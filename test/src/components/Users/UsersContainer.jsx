@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { requestPages, requestUsers } from '../../redux/usersReducer';
 import { useEffect } from 'react';
 import Users from './Users'
-import { useParams, withRouter } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 let UsersContainer =  (props) =>  {
     const dispatch = useDispatch()
@@ -37,13 +37,10 @@ let UsersContainer =  (props) =>  {
         <>
             <Users tableData={tableData}
                    usersData={usersData}
-                   getData={getData}
-                   pageNumber={pageNumber}/>
+                   getData={getData}/>
         </>
         
     )
 }
-
-
 
 export default UsersContainer;

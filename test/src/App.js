@@ -7,13 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setIsToken } from './redux/authReducer';
 import { useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { Nav } from './components/Nav/Nav';
 
 function App(props) {
   const isAuth = useSelector(state => state.auth.isAuth);
   const dispatch = useDispatch();
   
-
   useEffect(() => {
     dispatch(setIsToken(localStorage.token))
   }, [])
@@ -21,8 +19,6 @@ function App(props) {
   return (
     <>
       {isAuth && <Header />}
-      <Redirect from='/' to='/login' />
-      <Route path='/nav' component={Nav} />
       <Route path='/userslist/:pageNumber?' component={UsersContainer} />
       <Route path='/registration' component={Register} />
       <Route path='/login' component={Login} />

@@ -1,12 +1,10 @@
 import React from 'react';
 import { Table } from 'antd';
+import { useHistory } from 'react-router-dom';
 
 let Users = (props) => {
-    // console.log(props)
-    // console.log(props.pageNumber)
-
     const { Column } = Table;
-    let test = props.pageNumber
+    const history = useHistory()
 
     return (
         <>
@@ -17,9 +15,9 @@ let Users = (props) => {
                         pageSize: props.usersData.pagesInfo.per_page,
                         total: props.usersData.pagesInfo.total,
                         onChange: (i) => {
+                            history.push(`/userslist/${i}`)
                             props.getData(i)
-                            test = i
-                            console.log(test)}
+                        }
                     }
                 }
             >

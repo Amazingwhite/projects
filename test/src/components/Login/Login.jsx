@@ -15,7 +15,7 @@ let Login = (props) => {
   }
 
   if(localStorage.token) {
-    return <Redirect to='/nav'/>
+    return <Redirect from='/login' to='/userslist/1'/>
   }
   
   const onFinish = (values) => {
