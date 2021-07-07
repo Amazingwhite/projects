@@ -1,18 +1,20 @@
 import * as axios from "axios";
 
+console.log(process.env)
+
 const instance = axios.create({
-    baseURL: 'https://reqres.in/'
+    baseURL: `${process.env.REACT_APP_BASE_URL}`
 })
 
 export const loginAPI = {
     login(email, password) {
-        return instance.post(`api/login`, { email, password })
+        return instance.post(`${process.env.REACT_APP_LOGIN_URL}`, { email, password })
             .then(response => {
                 return response
             })
     },
     logout() {
-        return instance.delete(`api/login`)
+        return instance.delete(`${process.env.REACT_APP_LOGIN_URL}`)
             .then(response => {
                 return response
             });
@@ -21,7 +23,7 @@ export const loginAPI = {
 
 export const registerAPI = {
     registration(email, password) {
-        return instance.post(`api/register`, {email, password})
+        return instance.post(`${process.env.REACT_APP_REGISTER_URL}`, {email, password})
             .then(response => {
                 return response
             })
@@ -30,7 +32,7 @@ export const registerAPI = {
 
 export const usersAPI = {
     getUsers(currentPage = 1) {
-        return instance.get(`/api/users?page=${currentPage}`)
+        return instance.get(`${process.env.REACT_APP_USERS_URL}?page=${currentPage}`)
             .then(response => {
                 return response
             })
@@ -39,7 +41,7 @@ export const usersAPI = {
 
 export const profileAPI ={
     getSingleUser(userId) {
-        return instance.get(`/api/users/${userId}`)
+        return instance.get(`${process.env.REACT_APP_USERS_URL}/${userId}`)
             .then(response => {
                 return response
             })

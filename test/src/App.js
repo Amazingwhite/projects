@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setIsToken } from './redux/authReducer';
 import { useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
+// require('dotenv').config()
 
 function App(props) {
   const isAuth = useSelector(state => state.auth.isAuth);

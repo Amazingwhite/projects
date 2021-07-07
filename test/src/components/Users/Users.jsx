@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 let Users = (props) => {
     const { Column } = Table;
     const history = useHistory()
-    console.log(props)
+    // console.log(props)
 
     return (
         <>

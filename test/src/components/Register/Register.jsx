@@ -4,9 +4,11 @@ import 'antd/dist/antd.css';
 import { Redirect } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { login, registration } from '../../redux/authReducer';
+import { useHistory } from 'react-router-dom';
 
 let Register = (props) => {
     const dispatch = useDispatch();
+    const history = useHistory()
 
     if (localStorage.token) {
         return <Redirect to='/userslist/page1' />
@@ -83,6 +85,9 @@ let Register = (props) => {
                 >
                     <Button type="primary" htmlType="submit">
                         Submit
+                    </Button>
+                    <Button onClick={() => history.goBack()}>
+                        Back to Login
                     </Button>
 
                 </Form.Item>
