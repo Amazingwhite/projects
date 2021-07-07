@@ -21,6 +21,7 @@ function App(props) {
     <>
       {isAuth && <Header />}
       {!localStorage.token && <Redirect to='/login' />}
+      {localStorage.token && <Redirect from='/' to='/userslist/page1' />}
       <Route path='/profile/:userId?' component={ProfileContainer} />
       <Route path='/userslist/page:pageNumber?' component={UsersContainer} />
       <Route path='/registration' component={Register} />
