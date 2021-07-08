@@ -6,14 +6,6 @@
 	display: inline-block;
 }
 
-.person.female {
-	border-color: #F45B69;
-}
-
-.person.male {
-	border-color: #456990;
-}
-
 .person div {
 	text-align: center;
 }
@@ -61,7 +53,7 @@
 	text-align: center;
 	list-style-type: none;
 	position: relative;
-	padding: 20px 5px 0 5px;
+	padding: 25px;
 	transition: all 0.5s;
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
@@ -120,13 +112,12 @@ right connector from last child*/
 .tree ul ul::before {
 	content: '';
 	position: absolute;
-	top: 0;
-	left: 50%;
+	top: -5px;
+	left: 53%;
 	border-left: 1px solid #ccc;
 	width: 0;
-	height: 20px;
+	height: 25px;
 }
-
 .tree li .parent {
 	transition: all 0.5s;
 	-webkit-transition: all 0.5s;
@@ -139,7 +130,6 @@ right connector from last child*/
     top: 40px;
     left: 50%;
     border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
     width: 3px;
     height: 10px;
 }
@@ -158,33 +148,31 @@ right connector from last child*/
     top: 50%;
     left: -10px;
     border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
     width: 10px;
     height: 3px;
 }
 
-/*Time for some hover effects*/
-/*We will apply the hover effect the the lineage of the element also*/
-.tree li .child:hover,
-.tree li .child:hover+.parent .person,
-.tree li .parent .person:hover,
-.tree li .child:hover+.parent .person+ul li .child,
-.tree li .parent .person:hover+ul li .child,
-.tree li .child:hover+.parent .person+ul li .parent .person,
-.tree li .parent .person:hover+ul li .parent .person {
-	background: #c8e4f8;
-	color: #000;
-	border: 1px solid #94a0b4;
+.tree li .test1 {
+	border: 1px solid red;
 }
-/*Connector styles on hover*/
-.tree li .child:hover+.parent::before,
-.tree li .child:hover+.parent .person+ul li::after,
-.tree li .parent .person:hover+ul li::after,
-.tree li .child:hover+.parent .person+ul li::before,
-.tree li .parent .person:hover+ul li::before,
-.tree li .child:hover+.parent .person+ul::before,
-.tree li .parent .person:hover+ul::before,
-.tree li .child:hover+.parent .person+ul ul::before,
-.tree li .parent .person:hover+ul ul::before {
-	border-color: #94a0b4;
+
+.tree li .test1::after {
+	content: '';
+    position: absolute;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    width: 26%;
+    height: 20px;
+    top: 65px;
+    left: 5px;
 }
+
+/* .tree li .test1::before {
+	content: '';
+    position: absolute;
+    border-bottom: 1px solid green;
+    border-left: 1px solid green;
+    width: 29%;
+    left: auto;
+    height: 20px;
+} */
