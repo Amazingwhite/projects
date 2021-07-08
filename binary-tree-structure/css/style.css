@@ -24,29 +24,28 @@ body {
 	text-align: center;
 	list-style-type: none;
 	position: relative;
-	padding: 10px;
+	padding: 20px;
+	padding-bottom: 50px;
 	transition: .5s;
 }
 .tree li::before, .tree li::after {
 	content: '';
 	position: absolute;
-	top: 0;
+	bottom: 0;
 	right: 50%;
-	border-top: 1px solid #ccc;
+	border-top: 1px solid green;
 	width: 51%;
-	height: 10px;
+	height: 21px;
 }
 .tree li::after {
 	right: auto;
 	left: 50%;
-	border-left: 1px solid #ccc;
-	border-radius: 5px 0 0 0;
+	/* border-left: 1px solid yellow; */
 }
 .tree li::before {
-	border-right: 1px solid #ccc;
-	border-radius: 0 5px 0 0;
-	-webkit-border-radius: 0 5px 0 0;
-	-moz-border-radius: 0 5px 0 0;
+	/* border-right: 1px solid blue; */
+	/* -webkit-border-radius: 0 5px 0 0;
+	-moz-border-radius: 0 5px 0 0; */
 }
 .tree li:only-child::after, .tree li:only-child::before {
 	display: none;
@@ -63,16 +62,21 @@ body {
 	-moz-border-radius: 5px 0 0 0;
 } */
 
-/*Стрелка вниз*/
+/*Стрелка вниз/вверх*/
 .tree ul ul::before {
 	content: '';
 	position: absolute;
-	top: 0;
+	bottom: 0;
 	left: 50%;
-	border-left: 1px solid #ccc;
+	border: 1px solid red;
 	width: 0;
 	height: 20px;
 }
+
+.tree .grandparent::before, .tree .grandparent::after {
+	border: 10px solid orange;
+}
+
 .tree li a {
 	width: 125px;
 	height: 105px;
