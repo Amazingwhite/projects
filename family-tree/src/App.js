@@ -1,86 +1,102 @@
-import { useState } from 'react';
+import React, { useEffect } from 'react'
 import './App.css';
 import data from './data/data';
 
-function App() {
+let App = () => {
 
-  let [isActive, setIsActive] = useState(false)
-  let [isClicked, setIsClicked] = useState(false)
-  let toggleHandler = () => {
-    setIsActive(!isActive)
-    setIsClicked(!isClicked)
+  let clickHandler = (e) => {
+    let people = document.querySelectorAll('.person')
+    if(e.target.innerHTML.toLocaleLowerCase().indexOf('нет информации') === -1) {
+      people.forEach( (i) => {
+        if(i.classList.contains('clickedColor')) {
+          i.classList.remove('clickedColor')
+        }
+      })
+      e.currentTarget.classList.add('clickedColor')
+      e.currentTarget.classList.add('underline')
+    }
   }
 
-  // const myConnections = data[1].connections.map(id => data[id])
-  // console.log(myConnections)
+  useEffect(() => {
+    let people = document.querySelectorAll('.person')
+    people.forEach((i) => {
+      let isIllness = i.innerHTML.toLocaleLowerCase().indexOf('нет информации')
+      if (isIllness === -1) i.classList.add('fillColor')
+    })
+  }, [])
+  
+
+  // let testClick = (e) => {
+  //   console.log(e.target.innerHTML.toLocaleLowerCase().indexOf('нет информации'))
+  //   let filtered = people.forEach((i) => {
+  //     let isIllness = i.innerHTML.toLocaleLowerCase().indexOf('нет информации')
+  //     if (isIllness === -1) i.classList.add('fillColor')
+  //   })
+  //   return filtered
+  // }
+
   return (
     <>
-      <svg viewBox="0 0 660 270" xmlns="http://www.w3.org/2000/svg">
-        <g>
-          <rect  className={isActive ? 'testing' : null} x="80" y="10" ry="4" />
-          <text x="105" y="27">{data[5].name}</text>
+      <div className="tree">
+        <ul>
+          <li>
+            <div className="family">
 
-          <rect className={isActive ? 'testing' : null} x="200" y="10" ry="4" />
-          <text x="225" y="27">{data[4].name}</text>
+              <ul>
+                <li>
+                  <div onClick={clickHandler} className="person child">
+                    <div className="name">{data[4].name} <br />{data[4].illnesses.length > 0 ? data[4].illnesses.length + ' заболевания' : 'Нет информации'}</div>
+                  </div>
+                  <div onClick={clickHandler} className="person child">
+                    <div className="name grandfather">{data[5].name} <br />{data[5].illnesses.length > 0 ? data[5].illnesses.length + ' заболевания' : 'Нет информации'}</div>
+                  </div>
+                </li>
+                <li>
+                  <div onClick={clickHandler} className="person child">
+                    <div className="name grandmother">{data[6].name} <br />{data[6].illnesses.length > 0 ? data[6].illnesses.length + ' заболевания' : 'Нет информации'}</div>
+                  </div>
+                  <div onClick={clickHandler} className="person child">
+                    <div className="name">{data[7].name} <br />{data[7].illnesses.length > 0 ? data[7].illnesses.length + ' заболевания' : 'Нет информации'}</div>
+                  </div>
+                </li>
+              </ul>
 
-          <rect className={isActive ? 'testing' : null} x="350" y="10" ry="4" />
-          <text x="375" y="27">{data[6].name}</text>
+              <ul>
+                <li className="fatherBlock" style={{}}>
+                  <div onClick={clickHandler} className="person child">
+                    <div className="name">{data[9].name} <br />{data[9].illnesses.length > 0 ? data[9].illnesses.length + ' заболевания' : 'Нет информации'}</div>
+                  </div>
+                  <div onClick={clickHandler} className="person child test1">
+                    <div className="name father">{data[2].name} <br />{data[2].illnesses.length > 0 ? data[2].illnesses.length + ' заболевания' : 'Нет информации'}</div>
+                  </div>
+                </li>
+                <li className="motherBlock">
+                  <div onClick={clickHandler} className="person child test1">
+                    <div className="name mother">{data[3].name} <br />{data[3].illnesses.length > 0 ? data[3].illnesses.length + ' заболевания' : 'Нет информации'}</div>
+                  </div>
+                  <div onClick={clickHandler} className="person child">
+                    <div className="name">{data[10].name} <br />{data[10].illnesses.length > 0 ? data[10].illnesses.length + ' заболевания' : 'Нет информации'}</div>
+                  </div>
+                </li>
+              </ul>
 
-          <rect className={isActive ? 'testing' : null} x="470" y="10" ry="4" />
-          <text x="495" y="27">{data[7].name}</text>
+              <ul>
+                <div className="family">
+                  <div onClick={clickHandler} className="person child clickedColor">
+                    <div  className="name">{data[1].name} <br />{data[1].illnesses.length > 0 ? data[1].illnesses.length + ' заболевание' : 'Нет информации'}</div>
+                  </div>
+                  <div onClick={clickHandler} className="person spouse">
+                    <div className="name">{data[8].name} <br />{data[8].illnesses.length > 0 ? data[8].illnesses.length + ' заболевания' : 'Нет информации'}</div>
+                  </div>
+                </div>
+              </ul>
 
-          <line x1="130" x2="130" y1="35" y2="50" />
-          <line x1="250" x2="250" y1="35" y2="50" />
-          <line x1="400" x2="400" y1="35" y2="50" />
-          <line x1="520" x2="520" y1="35" y2="50" />
-
-          <path d="m129,50  h122 " />
-          <path d="m399,50  h122 " />
-
-          <line x1="190" x2="190" y1="50" y2="80" />
-          <line x1="460" x2="460" y1="50" y2="80" />
-
-          <path d="m129,80  h122 " />
-          <path d="m399,80  h122 " />
-
-          <line x1="130" x2="130" y1="80" y2="95" />
-          <line x1="250" x2="250" y1="80" y2="95" />
-          <line x1="400" x2="400" y1="80" y2="95" />
-          <line x1="520" x2="520" y1="80" y2="95" />
-
-          <rect className={isActive ? 'testing' : null} x="80" y="95" ry="4" />
-          <text x="85" y="112">Братья, сестры</text>
-
-          <rect className={isActive ? 'testing' : null} x="200" y="95" ry="4" />
-          <text x="235" y="112">{data[2].name}</text>
-
-          <rect className={isActive ? 'testing' : null} x="350" y="95" ry="4" />
-          <text x="385" y="112">{data[3].name}</text>
-
-          <rect className={isActive ? 'testing' : null} x="470" y="95" ry="4" />
-          <text x="475" y="112">Братья, сестры</text>
-
-          <line x1="250" x2="250" y1="120" y2="135" />
-          <line x1="400" x2="400" y1="120" y2="135" />
-
-          <path d="m249,135  h152 " />
-
-          <line x1="325" x2="325" y1="135" y2="150" />
-
-        
-          <rect onClick={toggleHandler} className={isClicked ? 'clicked' : null} x="280" y="150" ry="4" />
-          <text onClick={toggleHandler} x="320" y="167">{data[1].name}</text>
-          
-          <path d="m380,163  h50 " />
-
-          <rect className={isActive ? 'testing' : null} x="430" y="150" ry="4" />
-          <text x="435" y="167">Братья, сестры</text>
-        </g>
-      </svg>
+            </div>
+          </li>
+        </ul>
+      </div>
     </>
   );
 }
-
-//при клике перебирать массив data и создавать новый из элементов у которых есть болезни
 
 export default App;

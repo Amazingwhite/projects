@@ -14,7 +14,7 @@ const data = {
     3: {
         id:3,
         name: 'Мать',
-        illnesses: [],
+        illnesses: ['front-end', 'front-end', 'front-end', 'front-end'],
         connections: [1, 6, 7] 
     },
     4: {
@@ -26,7 +26,7 @@ const data = {
     5: {
         id: 5,
         name: 'Дедушка',
-        illnesses: [],
+        illnesses: ['ffff', 'dddd', 'oooo'],
         connections: [2]
     },
     6: {
@@ -39,6 +39,24 @@ const data = {
         id: 7,
         name: 'Дедушка',
         illnesses: [],
+        connections: [3]
+    },
+    8: {
+        id: 8,
+        name: 'Братья, сестры',
+        illnesses:[],
+        connections: [1]
+    },
+    9: {
+        id: 9,
+        name: 'Братья, сестры',
+        illnesses:[],
+        connections: [2]
+    },
+    10: {
+        id: 10,
+        name: 'Братья, сестры',
+        illnesses:[],
         connections: [3]
     }
 

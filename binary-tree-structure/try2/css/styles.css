@@ -33,6 +33,7 @@
 	left: 2px;
 	font-weight: bold;
 }
+
 .parentDrop>.person,
 .spouseDrop>.person,
 .childDrop>.person {
@@ -59,10 +60,8 @@
 	-moz-transition: all 0.5s;
 }
 
-
-
 /*We will use ::before and ::after to draw the connectors*/
-.tree li::before, .tree li::after {
+/* .tree li::before, .tree li::after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -76,7 +75,7 @@
 	right: auto;
 	left: 50%;
 	border-left: 1px solid #ccc;
-}
+} */
 
 /*We need to remove left-right connectors from elements without 
 any siblings*/
@@ -91,9 +90,11 @@ any siblings*/
 
 /*Remove left connector from first child and 
 right connector from last child*/
-.tree li:first-child::before, .tree li:last-child::after {
-	border: 0 none;
-}
+
+/* .tree li:first-child::before, .tree li:last-child::after {					
+	border: 0 none;																нужно для father/mother блоков
+} */
+
 /*Adding back the vertical connector to the last nodes*/
 .tree li:last-child::before {
 	border-right: 1px solid #ccc;
@@ -109,7 +110,7 @@ right connector from last child*/
 }
 
 /*Time to add downward connectors from parents*/
-.tree ul ul::before {
+.tree ul ul:last-child::before {
 	content: '';
 	position: absolute;
 	top: -5px;
@@ -152,10 +153,6 @@ right connector from last child*/
     height: 3px;
 }
 
-.tree li .test1 {
-	border: 1px solid red;
-}
-
 .tree li .test1::after {
 	content: '';
     position: absolute;
@@ -167,12 +164,83 @@ right connector from last child*/
     left: 5px;
 }
 
-/* .tree li .test1::before {
+.tree li .test1::before {
 	content: '';
     position: absolute;
-    border-bottom: 1px solid green;
-    border-left: 1px solid green;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
     width: 29%;
     left: auto;
+	bottom: 4px;
     height: 20px;
-} */
+}
+
+.father::after, .mother::after,
+.father::before, .mother::before,
+.grandfather::after, .grandmother::after,
+.grandfather::before, .grandmother::before,
+.motherBlock::after, .fatherBlock::after,
+.motherBlock::before, .fatherBlock::before{
+	content: '';
+    position: absolute;
+}
+
+.father::after,
+.mother::after{
+	border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    width: 22%;
+    height: 20px;
+    left: 110px;
+    top: 5px;
+}
+
+.father::before,
+.mother::before {
+	border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    width: 22%;
+    height: 20px;
+    right: 110px;
+    top: 5px;
+}
+
+.grandfather::after,
+.grandmother::after{
+	border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    width: 22%;
+    height: 20px;
+    left: 110px;
+    bottom: 5px;
+}
+
+.grandfather::before,
+.grandmother::before{
+	border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    width: 22%;
+    height: 20px;
+    right: 110px;
+    bottom: 5px;
+}
+
+.tree li .test1:first-child::before, .tree li .test1:last-child::after {
+	display: none;
+}
+
+.fatherBlock::before {
+	border-right: 1px solid #ccc;
+    width: 44%;
+    top: -26px;
+    height: 35%;
+}
+
+
+.motherBlock::after {
+	border-right: 1px solid #ccc;
+    width: 40%;
+    height: 35%;
+    left: 40px;
+    top: -26px;
+}
