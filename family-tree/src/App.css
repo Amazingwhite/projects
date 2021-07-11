@@ -1,49 +1,30 @@
 .person {
 	border: 1px solid black;
-	margin-left: 10px;
-	padding: 10px;
-	min-width: 150px;
-	background-color: #FFFFFF;
-	display: inline-block;
-}
-
-.person div {
+	width: 128px;
 	height: 109px;
 	text-align: center;
+	/* padding: 10px;  */
+	min-width: 128px;
+	background-color: #FFFFFF;
+	display: inline-block;
+	
+}
+
+
+.leftSidePerson {
+	margin-left: 46px;
+}
+
+.rightSidePerson {
+	margin-left: 69px;
 }
 
 .person .name {
-	font-size: 16px;
+	font-size: 14px;
 	max-width: 128px;
 	max-height: 109px;
 	margin: auto;
 	cursor: pointer;
-}
-
-.person .parentDrop, .person .spouseDrop, .person .childDrop {
-	border: 1px dashed #000000;
-	width: auto;
-	min-width: 128px;
-	min-height: 109px;
-	display: inline-block;
-	vertical-align: top;
-	position: relative;
-	padding-top: 15px;
-}
-
-.person .parentDrop>span,
-.person .spouseDrop>span,
-.person .childDrop>span {
-	position: absolute;
-	top: 2px;
-	left: 2px;
-	font-weight: bold;
-}
-
-.parentDrop>.person,
-.spouseDrop>.person,
-.childDrop>.person {
-	margin-top: 20px;
 }
 
 /* Tree */
@@ -60,33 +41,10 @@
 	text-align: center;
 	list-style-type: none;
 	position: relative;
-	padding: 25px;
+	padding: 25px 0 25px 0;
 	transition: all 0.5s;
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
-}
-
-/*We will use ::before and ::after to draw the connectors*/
-/* .tree li::before, .tree li::after {
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 50%;
-	border-top: 1px solid #ccc;
-	width: 50%;
-	height: 20px;
-}
-
-.tree li::after {
-	right: auto;
-	left: 50%;
-	border-left: 1px solid #ccc;
-} */
-
-/*We need to remove left-right connectors from elements without 
-any siblings*/
-.tree li:only-child::after, .tree li:only-child::before {
-	display: none;
 }
 
 /*Remove space from the top of single children*/
@@ -94,161 +52,23 @@ any siblings*/
 	padding-top: 0;
 }
 
-/*Remove left connector from first child and 
-right connector from last child*/
-
-/* .tree li:first-child::before, .tree li:last-child::after {					
-	border: 0 none;																нужно для father/mother блоков
-} */
-
-/*Adding back the vertical connector to the last nodes*/
-.tree li:last-child::before {
-	border-right: 1px solid #ccc;
-	border-radius: 0 5px 0 0;
-	-webkit-border-radius: 0 5px 0 0;
-	-moz-border-radius: 0 5px 0 0;
-}
-
-.tree li:first-child::after {
-	border-radius: 5px 0 0 0;
-	-webkit-border-radius: 5px 0 0 0;
-	-moz-border-radius: 5px 0 0 0;
-}
-
-/*Time to add downward connectors from parents*/
-.tree ul ul:last-child::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 53%;
-	border-left: 1px solid #ccc;
-	height: 25px;
-}
 .tree li .parent {
 	transition: all 0.5s;
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
 	margin-top: 10px;
 }
-.tree li .parent::before {
-    content: '';
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    border-left: 1px solid #ccc;
-    width: 3px;
-    height: 10px;
-}
+
 .tree li .family {
 	position: relative;
 }
-.tree li .family .spouse {
+
+/* .tree li .family .spouse {
 	position: absolute;
 	top: 0;
 	left: 50%;
     margin-left: 135px;
-}
-.tree li .family .spouse::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -45px;
-    border-top: 1px solid #ccc;
-    width: 44px;
-    height: 3px;
-}
-
-.tree li .test1::after {
-	content: '';
-    position: absolute;
-    border-bottom: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    width: 26%;
-    height: 24px;
-    bottom: 0;
-    left: 5px;
-}
-
-.tree li .test1::before {
-	content: '';
-    position: absolute;
-    border-bottom: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    width: 29%;
-    left: auto;
-	bottom: 0;
-    height: 24px;
-}
-
-.father::after, .mother::after,
-.father::before, .mother::before,
-.grandfather::after, .grandmother::after,
-.grandfather::before, .grandmother::before,
-.motherBlock::after, .fatherBlock::after,
-.motherBlock::before, .fatherBlock::before{
-	content: '';
-    position: absolute;
-}
-
-.father::after,
-.mother::after{
-	border-top: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    width: 24%;
-    height: 19px;
-    left: 110px;
-    top: 5px;
-}
-
-.father::before,
-.mother::before {
-	border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    width: 24%;
-    height: 19px;
-    right: 110px;
-    top: 5px;
-}
-
-.grandfather::after,
-.grandmother::after{
-	border-bottom: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    width: 24%;
-    height: 19px;
-    left: 110px;
-    bottom: 5px;
-}
-
-.grandfather::before,
-.grandmother::before{
-	border-bottom: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    width: 24%;
-    height: 19px;
-    right: 110px;
-    bottom: 5px;
-}
-
-.tree li .test1:first-child::before, .tree li .test1:last-child::after {
-	display: none;
-}
-
-.fatherBlock::before {
-	border-right: 1px solid #ccc;
-    width: 44%;
-    top: -26px;
-    height: 17%;
-}
-
-
-.motherBlock::after {
-	border-right: 1px solid #ccc;
-    width: 40%;
-    height: 17%;
-    left: 42px;
-    top: -26px;
-}
+} */
 
 .fillColor {
 	background-color: #f0f6ff;
@@ -256,4 +76,146 @@ right connector from last child*/
 
 .clickedColor {
 	background-color: #57a1d9;
+}
+
+.connector {
+	margin: 0;
+	padding: 0;
+	content: '';
+	position: absolute;
+	width: 99px;
+    height: 20px;
+    top: 75px;
+}
+
+.verticalConnector {
+	margin: 0;
+	padding: 0;
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 107px;
+    top: -31px;
+}
+
+.bottomConnector {
+	margin: 0;
+	padding: 0;
+	content: '';
+	position: absolute;
+	width: 122px;
+	height: 21px;
+	top: -25px;
+}
+
+.fatherLeftConnector {
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+    left: 150px;
+    
+}
+
+.fatherRightConnector {
+	border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+	left: 250px;
+}
+
+.fatherVerticalConnector {
+	border-left: 1px solid #ccc;
+	left: 248px;
+}
+
+.motherLeftConnector {
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	left: 592px;
+}
+
+.motherVerticalConnector {
+	border-left: 1px solid #ccc;
+	left: 690px;
+}
+
+.motherRightConnector {
+	border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+	left: 692px;
+}
+
+.grandmotherLeftConnector {
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	top: -26px;
+	left: 150px;
+}
+
+.grandmotherRightConnector {
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	top: -26px;
+	left: 250px
+}
+
+.grandfatherLeftConnector {
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	top: -26px;
+	left: 592px;
+	
+}
+
+.grandfatherRightConnector {
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	top: -26px;
+	left: 692px;
+}
+
+.meLeftConnector {
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	left: 350px;
+}
+
+.meVerticalConnector {
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	margin: 0;
+	padding: 0;
+	content: '';
+	position: absolute;
+	width: 0;
+	top: -3px;
+	left: 473px;
+	height: 20px;
+}
+
+.meRightConnector {
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	left: 473px;
+}
+
+.myselfBlock {
+    top: -27px;
+    left: 125%;
+
+}
+
+.mySiblings {
+	margin-left: 35px;
+}
+
+.meHorizontalConnector {
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	margin: 0;
+	padding: 0;
+	content: '';
+	position: absolute;
+	height: 0;
+	width: 35px;
+	top: 73px;
+    left: 538px;
 }
