@@ -1,5 +1,6 @@
 .person {
-	border: 1px solid black;
+	border-radius: 15px;
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.09);
 	width: 128px;
 	height: 109px;
 	text-align: center;
@@ -7,9 +8,8 @@
 	min-width: 128px;
 	background-color: #FFFFFF;
 	display: inline-block;
-	
+	color: #949494;
 }
-
 
 .leftSidePerson {
 	margin-left: 46px;
@@ -20,11 +20,38 @@
 }
 
 .person .name {
-	font-size: 14px;
 	max-width: 128px;
 	max-height: 109px;
 	margin: auto;
 	cursor: pointer;
+}
+
+.personTitle {
+	margin-top: 10px;
+	margin-bottom: 0;
+	font-weight: 600;
+	font-size: 13px;
+	height: 18px;
+	color: #2C2F33;
+}
+
+.personInfo {
+	font-size: 12px;
+	font-weight: 400;
+	margin-top: 5px;
+	
+}
+
+.activeText {
+	color: #57A1D9;
+}
+
+.inactiveText {
+	color: #949494;
+}
+
+.clickedText {
+	color: #FFFFFF;
 }
 
 /* Tree */
@@ -75,6 +102,7 @@
 }
 
 .clickedColor {
+	color: #FFFFFF;
 	background-color: #57a1d9;
 }
 
@@ -93,8 +121,8 @@
 	padding: 0;
 	content: '';
 	position: absolute;
-	width: 0;
-	height: 107px;
+	width: 10px;
+	height: 106px;
     top: -31px;
 }
 
@@ -109,78 +137,99 @@
 }
 
 .fatherLeftConnector {
-	border-top: 1px solid #ccc;
-	border-left: 1px solid #ccc;
+	border-top: 0.75px solid #CFCFCF;
+	border-left: 0.75px solid #CFCFCF;
     left: 150px;
+	border-radius: 5px 0 0 0;
     
 }
 
 .fatherRightConnector {
-	border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+	border-top: 0.75px solid #CFCFCF;
+    border-right: 0.75px solid #CFCFCF;
 	left: 250px;
+	border-radius: 0 5px 0 0;
 }
 
-.fatherVerticalConnector {
-	border-left: 1px solid #ccc;
+.fatherVerticalConnectorPT1 {
+	border-left: 0.75px solid #CFCFCF;
+	border-top: 0.75px solid #CFCFCF;
+	border-bottom: 0.75px solid #CFCFCF;
+	border-radius: 3px;
 	left: 248px;
 }
 
+.fatherVerticalConnectorPT2 {
+	border-right: 0.75px solid #CFCFCF;
+	border-top: 0.75px solid #CFCFCF;
+	border-bottom: 0.75px solid #CFCFCF;
+	border-radius: 3px;
+	left: 238px;
+}
+
 .motherLeftConnector {
-	border-top: 1px solid #ccc;
-	border-left: 1px solid #ccc;
+	border-top: 0.75px solid #CFCFCF;
+	border-left: 0.75px solid #CFCFCF;
 	left: 592px;
+	border-radius: 5px 0 0 0;
 }
 
 .motherVerticalConnector {
-	border-left: 1px solid #ccc;
+	border-left: 0.75px solid #CFCFCF;
 	left: 690px;
 }
 
 .motherRightConnector {
-	border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+	border-top: 0.75px solid #CFCFCF;
+    border-right: 0.75px solid #CFCFCF;
 	left: 692px;
+	border-radius: 0 5px 0 0;
 }
 
-.grandmotherLeftConnector {
-	border-left: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
+.agedFatherLeftConnector {
+	border-left: 0.75px solid #CFCFCF;
+	border-bottom: 0.75px solid #CFCFCF;
 	top: -26px;
 	left: 150px;
+	border-radius: 0 0 0 5px;
 }
 
-.grandmotherRightConnector {
-	border-right: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
+.agedFatherRightConnector
+ {
+	border-right: 0.75px solid #CFCFCF;
+	border-bottom: 0.75px solid #CFCFCF;
 	top: -26px;
-	left: 250px
+	left: 250px;
+	border-radius: 0 0 5px 0;
 }
 
-.grandfatherLeftConnector {
-	border-left: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
+.agedMotherLeftConnector {
+	border-left: 0.75px solid #CFCFCF;
+	border-bottom: 0.75px solid #CFCFCF;
 	top: -26px;
 	left: 592px;
+	border-radius: 0 0 0 5px;
 	
 }
 
-.grandfatherRightConnector {
-	border-right: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
+.agedMotherRightConnector {
+	border-right: 0.75px solid #CFCFCF;
+	border-bottom: 0.75px solid #CFCFCF;
 	top: -26px;
 	left: 692px;
+	border-radius: 0 0 5px 0;
 }
 
 .meLeftConnector {
-	border-left: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
+	border-left: 0.75px solid #CFCFCF;
+	border-bottom: 0.75px solid #CFCFCF;
 	left: 350px;
+	border-radius: 0 0 0 5px;
 }
 
 .meVerticalConnector {
-	border-right: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
+	border-right: 0.75px solid #CFCFCF;
+	border-bottom: 0.75px solid #CFCFCF;
 	margin: 0;
 	padding: 0;
 	content: '';
@@ -192,9 +241,10 @@
 }
 
 .meRightConnector {
-	border-right: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
+	border-right: 0.75px solid #CFCFCF;
+	border-bottom: 0.75px solid #CFCFCF;
 	left: 473px;
+	border-radius: 0 0 5px 0;
 }
 
 .myselfBlock {
@@ -203,13 +253,13 @@
 
 }
 
-.mySiblings {
+.meSiblings {
 	margin-left: 35px;
 }
 
 .meHorizontalConnector {
-	border-right: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
+	border-right: 0.75px solid #CFCFCF;
+	border-bottom: 0.75px solid #CFCFCF;
 	margin: 0;
 	padding: 0;
 	content: '';
@@ -217,5 +267,9 @@
 	height: 0;
 	width: 35px;
 	top: 73px;
-    left: 538px;
+    left: 532px;
+}
+
+.clickedConnector {
+	border-color: #57a1d9;
 }

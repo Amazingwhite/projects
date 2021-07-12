@@ -8,31 +8,31 @@ const data = {
     2: {
         id:2,
         name: 'Отец',
-        illnesses: [],
+        illnesses: [1],
         connections: [1, 4, 5] 
     },
     3: {
         id:3,
         name: 'Мать',
-        illnesses: ['front-end', 'front-end', 'front-end', 'front-end'],
+        illnesses: [1],
         connections: [1, 6, 7] 
     },
     4: {
         id: 4,
         name: 'Бабушка',
-        illnesses: [],
+        illnesses: [1],
         connections: [2]
     },
     5: {
         id: 5,
         name: 'Дедушка',
-        illnesses: ['ffff', 'dddd', 'oooo'],
+        illnesses: [],
         connections: [2]
     },
     6: {
         id: 6,
         name: 'Бабушка',
-        illnesses: [],
+        illnesses: [1],
         connections: [3]
     },
     7: {
@@ -44,7 +44,7 @@ const data = {
     8: {
         id: 8,
         name: 'Братья, сестры',
-        illnesses:[],
+        illnesses:[1],
         connections: [1]
     },
     9: {
