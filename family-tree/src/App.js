@@ -59,16 +59,14 @@ let App = () => {
     if (document.querySelector('.meVerticalConnector').classList.contains('clickedConnector') && document.querySelector('.fatherGrandmother').classList.contains('fillColor')) {
       document.querySelector('.meLeftConnector').classList.add('clickedConnector')
       document.querySelector('.fatherRightConnector').classList.add('clickedConnector')
-      document.querySelector('.fatherVerticalConnectorPT1').classList.add('clickedConnector')
-      document.querySelector('.fatherVerticalConnectorPT2').classList.add('clickedConnector')
+      document.querySelector('.fatherVerticalConnector').classList.add('clickedConnector')
       document.querySelector('.agedFatherLeftConnector').classList.add('clickedConnector')
     }
 
     if (document.querySelector('.meVerticalConnector').classList.contains('clickedConnector') && document.querySelector('.fatherGrandfather').classList.contains('fillColor')) {
       document.querySelector('.meLeftConnector').classList.add('clickedConnector')
       document.querySelector('.fatherRightConnector').classList.add('clickedConnector')
-      document.querySelector('.fatherVerticalConnectorPT1').classList.add('clickedConnector')
-      document.querySelector('.fatherVerticalConnectorPT2').classList.add('clickedConnector')
+      document.querySelector('.fatherVerticalConnector').classList.add('clickedConnector')
       document.querySelector('.agedFatherRightConnector').classList.add('clickedConnector')
     }
 
@@ -125,7 +123,9 @@ let App = () => {
                       <p className='personTitle'>{data[6].name}</p>
                       <p className='personInfo'>{data[6].illnesses.length > 0 ? data[6].illnesses.length + ' заболевания' : 'Нет информации'}</p>
                     </div>
+                
                   </div>
+                  
                   <div onClick={clickHandler} className="person rightSidePerson motherGrandfather">
                     <div className="name">
                       <p className='personTitle'>{data[7].name}</p>
@@ -133,22 +133,23 @@ let App = () => {
                     </div>
                   </div>
                 </li>
+                
               </ul>
 
               <ul style={{ padding: '0' }}>
                 <li >
+                <div className='tri'></div>
                   <div className='connector agedFatherLeftConnector'></div>
                   <div className='connector agedFatherRightConnector'></div>
                   <div className='connector agedMotherLeftConnector'></div>
                   <div className='connector agedMotherRightConnector'></div>
                 </li>
               </ul>
-
+              
               <ul style={{ padding: '0' }}>
                 <li>
                   <div className="connector fatherLeftConnector"></div>
-                  <div className='verticalConnector fatherVerticalConnectorPT1'></div>
-                  <div className='verticalConnector fatherVerticalConnectorPT2'></div>
+                  <div className='verticalConnector fatherVerticalConnector'></div>
                   <div className="connector fatherRightConnector"></div>
                 </li>
 

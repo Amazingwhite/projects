@@ -151,21 +151,12 @@
 	border-radius: 0 5px 0 0;
 }
 
-.fatherVerticalConnectorPT1 {
+.fatherVerticalConnector {
 	border-left: 0.75px solid #CFCFCF;
-	border-top: 0.75px solid #CFCFCF;
-	border-bottom: 0.75px solid #CFCFCF;
-	border-radius: 3px;
 	left: 248px;
 }
 
-.fatherVerticalConnectorPT2 {
-	border-right: 0.75px solid #CFCFCF;
-	border-top: 0.75px solid #CFCFCF;
-	border-bottom: 0.75px solid #CFCFCF;
-	border-radius: 3px;
-	left: 238px;
-}
+
 
 .motherLeftConnector {
 	border-top: 0.75px solid #CFCFCF;
@@ -272,4 +263,12 @@
 
 .clickedConnector {
 	border-color: #57a1d9;
+}
+
+.tri {
+width: 0; 
+height: 0;
+border-left: 16px solid transparent;
+border-right: 16px solid transparent;
+border-top: 35px solid #24375B;
 }
