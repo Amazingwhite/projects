@@ -65,11 +65,6 @@ let App = () => {
     if(document.querySelector('.father').classList.contains('fillColor')) document.querySelector('.treFather').classList.add('activeTre')
     if(document.querySelector('.mother').classList.contains('fillColor')) document.querySelector('.treMother').classList.add('activeTre')
 
-    
-
-    
-    
-
     //Подсветка конекторов у "Я"
 
     if (document.querySelector('.me').classList.contains('fillColor') && document.querySelector('.father').classList.contains('fillColor')) {
