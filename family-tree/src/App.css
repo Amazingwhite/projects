@@ -4,7 +4,6 @@
 	width: 128px;
 	height: 109px;
 	text-align: center;
-	/* padding: 10px;  */
 	min-width: 128px;
 	background-color: #FFFFFF;
 	display: inline-block;
@@ -54,7 +53,6 @@
 	color: #FFFFFF;
 }
 
-/* Tree */
 .tree ul {
 	padding-top: 20px;
 	position: relative;
@@ -74,7 +72,6 @@
 	-moz-transition: all 0.5s;
 }
 
-/*Remove space from the top of single children*/
 .tree li:only-child {
 	padding-top: 0;
 }
@@ -89,13 +86,6 @@
 .tree li .family {
 	position: relative;
 }
-
-/* .tree li .family .spouse {
-	position: absolute;
-	top: 0;
-	left: 50%;
-    margin-left: 135px;
-} */
 
 .fillColor {
 	background-color: #f0f6ff;
@@ -155,8 +145,6 @@
 	border-left: 0.75px solid #CFCFCF;
 	left: 248px;
 }
-
-
 
 .motherLeftConnector {
 	border-top: 0.75px solid #CFCFCF;
@@ -265,10 +253,47 @@
 	border-color: #57a1d9;
 }
 
-.tri {
-width: 0; 
-height: 0;
-border-left: 16px solid transparent;
-border-right: 16px solid transparent;
-border-top: 35px solid #24375B;
+.tre {
+	width: 0; 
+	height: 0;
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	border-top: 18px solid #FFFFFF;
+	margin-top: -18px;
+	box-shadow: 4px rgba(0, 0, 0, 0.09);
+	
+}
+
+.activeTre {
+	border-top: 18px solid #f0f6ff;
+}
+
+.clickedTre {
+	border-top: 18px solid #57a1d9;
+}
+
+.treLeftGrandmother {
+	margin-top: -45px;
+	margin-left: 95px;
+}
+
+.treLeftGrandfather {
+    margin-left: 294px;
+}
+
+.treRightGrandmother {
+    margin-left: 537px;
+}
+
+.treRightGrandfather {
+    margin-left: 736px;
+}
+
+.treFather {
+	margin-top: -45px;
+	margin-left: 295px;
+}
+
+.treMother {
+	margin-left: 540px;
 }

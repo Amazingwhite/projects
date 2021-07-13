@@ -5,7 +5,14 @@ import data from './data/data';
 let App = () => {
 
   let clickHandler = (e) => {
-    let people = document.querySelectorAll('.person')
+    let people = document.querySelectorAll('.person');
+    if(e.currentTarget.classList.contains('fillColor')){
+    if(document.querySelectorAll('.clickedTre').length > 0) {
+      document.querySelectorAll('.clickedTre').forEach((i) => {
+        i.classList.remove('clickedTre')
+      })
+    }
+  }
     if (e.target.innerHTML.toLocaleLowerCase().indexOf('нет информации') === -1) {
       people.forEach((i) => {
         if (i.classList.contains('clickedColor')) {
@@ -13,6 +20,28 @@ let App = () => {
         }
       })
       e.currentTarget.classList.add('clickedColor')
+
+      //Подсветка треугольников синим
+    if(document.querySelector('.fatherGrandmother').classList.contains('clickedColor')) {
+      document.querySelector('.treLeftGrandmother').classList.add('clickedTre') 
+    } 
+    if(document.querySelector('.fatherGrandfather').classList.contains('clickedColor')) {
+      document.querySelector('.treLeftGrandfather').classList.add('clickedTre')
+    }
+    if(document.querySelector('.motherGrandmother').classList.contains('clickedColor')) {
+      document.querySelector('.treRightGrandmother').classList.add('clickedTre')
+    }
+    if(document.querySelector('.motherGrandfather').classList.contains('clickedColor')) {
+      document.querySelector('.treRightGrandfather').classList.add('clickedTre')
+    }
+
+    if(document.querySelector('.father').classList.contains('clickedColor')) {
+      document.querySelector('.treFather').classList.add('clickedTre')
+    }
+    if(document.querySelector('.mother').classList.contains('clickedColor')) {
+      document.querySelector('.treMother').classList.add('clickedTre')
+    }
+
     }
   }
 
@@ -25,6 +54,21 @@ let App = () => {
         i.classList.add('activeText')
       }
     })
+
+    //Подсветка треугольников серым
+
+    if(document.querySelector('.fatherGrandmother').classList.contains('fillColor')) document.querySelector('.treLeftGrandmother').classList.add('activeTre')
+    if(document.querySelector('.fatherGrandfather').classList.contains('fillColor')) document.querySelector('.treLeftGrandfather').classList.add('activeTre')
+    if(document.querySelector('.motherGrandmother').classList.contains('fillColor')) document.querySelector('.treRightGrandmother').classList.add('activeTre')
+    if(document.querySelector('.motherGrandfather').classList.contains('fillColor')) document.querySelector('.treRightGrandfather').classList.add('activeTre')
+
+    if(document.querySelector('.father').classList.contains('fillColor')) document.querySelector('.treFather').classList.add('activeTre')
+    if(document.querySelector('.mother').classList.contains('fillColor')) document.querySelector('.treMother').classList.add('activeTre')
+
+    
+
+    
+    
 
     //Подсветка конекторов у "Я"
 
@@ -136,9 +180,19 @@ let App = () => {
                 
               </ul>
 
+              <ul style={{height: '0'}}>
+                <li>
+                <div className='tre treLeftGrandmother'></div>
+                <div className='tre treLeftGrandfather'></div>
+
+                <div className='tre treRightGrandmother'></div>
+                <div className='tre treRightGrandfather'></div>
+                </li>
+              </ul>
+
               <ul style={{ padding: '0' }}>
                 <li >
-                <div className='tri'></div>
+                
                   <div className='connector agedFatherLeftConnector'></div>
                   <div className='connector agedFatherRightConnector'></div>
                   <div className='connector agedMotherLeftConnector'></div>
@@ -188,6 +242,13 @@ let App = () => {
                       <p className='personInfo'> {data[10].illnesses.length > 0 ? data[10].illnesses.length + ' заболевания' : 'Нет информации'}</p>
                     </div>
                   </div>
+                </li>
+              </ul>
+
+              <ul style={{height: '0'}}>
+                <li>
+                  <div className='tre treFather'></div>
+                  <div className='tre treMother'></div>
                 </li>
               </ul>
 
