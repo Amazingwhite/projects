@@ -3,61 +3,61 @@ const data = {
         id:1,
         name: 'Я',
         illnesses: ['front-end'],
-        connections: [2, 3] 
+        age: 25
     },
     2: {
         id:2,
         name: 'Отец',
         illnesses: [1],
-        connections: [1, 4, 5] 
+        age: 25 
     },
     3: {
         id:3,
         name: 'Мать',
         illnesses: [1],
-        connections: [1, 6, 7] 
+        age: 25 
     },
     4: {
         id: 4,
         name: 'Бабушка',
         illnesses: [1],
-        connections: [2]
+        age: 25
     },
     5: {
         id: 5,
         name: 'Дедушка',
-        illnesses: [],
-        connections: [2]
+        illnesses: [1],
+        age: 25
     },
     6: {
         id: 6,
         name: 'Бабушка',
         illnesses: [1],
-        connections: [3]
+        age: 25
     },
     7: {
         id: 7,
         name: 'Дедушка',
-        illnesses: [],
-        connections: [3]
+        illnesses: [1],
+        age: 25
     },
     8: {
         id: 8,
         name: 'Братья, сестры',
         illnesses:[1],
-        connections: [1]
+        age: 25
     },
     9: {
         id: 9,
         name: 'Братья, сестры',
         illnesses:[],
-        connections: [2]
+        age: 25
     },
     10: {
         id: 10,
         name: 'Братья, сестры',
         illnesses:[],
-        connections: [3]
+        age: 25
     }
 
 }
