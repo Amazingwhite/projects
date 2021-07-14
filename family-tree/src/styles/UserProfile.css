@@ -8,13 +8,13 @@
 	background-color: #FFFFFF;
 	display: inline-block;
 	color: #949494;
+	cursor: pointer;
 }
 
-.person .name {
+.name {
 	max-width: 128px;
 	max-height: 109px;
 	margin: auto;
-	cursor: pointer;
 }
 
 .personTitle {
@@ -37,6 +37,10 @@
 	margin-left: 46px;
 }
 
+.rightSidePerson {
+	margin-left: 69px;
+}
+
 .fillColor {
 	background-color: #f0f6ff;
 }
@@ -52,30 +56,4 @@
 .clickedColor {
 	color: #FFFFFF;
 	background-color: #57a1d9;
-}
-
-.treLeftGrandmother {
-	margin-top: -45px;
-	margin-left: 95px;
-}
-
-.treLeftGrandfather {
-    margin-left: 294px;
-}
-
-.treRightGrandmother {
-    margin-left: 537px;
-}
-
-.treRightGrandfather {
-    margin-left: 736px;
-}
-
-.treFather {
-	margin-top: -45px;
-	margin-left: 295px;
-}
-
-.treMother {
-	margin-left: 540px;
 }

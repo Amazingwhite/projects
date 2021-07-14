@@ -16,9 +16,9 @@ let App = () => {
   let motherSiblings = useRef();
   let me = useRef();
   let meSiblings = useRef();
+  let usersRefs = [fatherGrandmother, fatherGrandfather, motherGrandmother, motherGrandfather, father, fatherSiblings, mother, motherSiblings, me,meSiblings]
 
   //connectors refs
-
   let meVerticalConnector = useRef();
   let meRightConnector = useRef();
   let meLeftConnector = useRef();
@@ -38,33 +38,32 @@ let App = () => {
   let agedMotherRightConnector = useRef();
 
   //треугольники refs
-
   let treLeftGrandmother = useRef();
   let treLeftGrandfather = useRef();
   let treRightGrandmother = useRef();
   let treRightGrandfather = useRef();
   let treFather = useRef();
   let treMother = useRef();
+  let treRefs = [treLeftGrandmother, treLeftGrandfather, treRightGrandmother, treRightGrandfather, treFather, treMother]
   
-
   let clickHandler = (e) => {
-    let people = document.querySelectorAll('.person');
     if(e.currentTarget.classList.contains('fillColor')){
-    if(document.querySelectorAll('.clickedTre').length > 0) {
-      document.querySelectorAll('.clickedTre').forEach((i) => {
-        i.classList.remove('clickedTre')
+
+      treRefs.forEach(i => {
+        if(i.current.classList.contains('clickedTre')) {
+          i.current.classList.remove('clickedTre')
+        }
       })
-    }
-  }
-    if (e.target.innerHTML.toLocaleLowerCase().indexOf('нет информации') === -1) {
-      people.forEach((i) => {
-        if (i.classList.contains('clickedColor')) {
-          i.classList.remove('clickedColor')
+      
+      usersRefs.forEach(i => {
+        if(i.current.classList.contains('clickedColor')) {
+          i.current.classList.remove('clickedColor')
         }
       })
       e.currentTarget.classList.add('clickedColor')
+  }
+    //Подсветка треугольников синим
 
-      //Подсветка треугольников синим
     if(fatherGrandmother.current.classList.contains('clickedColor')) {
       treLeftGrandmother.current.classList.add('clickedTre') 
     } 
@@ -84,12 +83,8 @@ let App = () => {
     if(mother.current.classList.contains('clickedColor')) {
       treMother.current.classList.add('clickedTre')
     }
-
-    }
-  }
-
+} 
   useEffect(() => {
-
     //Подсветка треугольников серым
 
     if(fatherGrandmother.current.classList.contains('fillColor')) treLeftGrandmother.current.classList.add('activeTre')
@@ -161,109 +156,55 @@ let App = () => {
       motherVerticalConnector.current.classList.add('clickedConnector')
       agedMotherRightConnector.current.classList.add('clickedConnector')
     }
-
-  }, [])
-
-  useEffect(() => {
-    //Подсветка треугольников синим
-    if(fatherGrandmother.current.classList.contains('clickedColor')) {
-      treLeftGrandmother.current.classList.add('clickedTre') 
-    } 
-    if(fatherGrandfather.current.classList.contains('clickedColor')) {
-      treLeftGrandfather.current.classList.add('clickedTre')
-    }
-    if(motherGrandmother.current.classList.contains('clickedColor')) {
-      treRightGrandmother.current.classList.add('clickedTre')
-    }
-    if(motherGrandfather.current.classList.contains('clickedColor')) {
-      treRightGrandfather.current.classList.add('clickedTre')
-    }
-
-    if(father.current.classList.contains('clickedColor')) {
-      treFather.current.classList.add('clickedTre')
-    }
-    if(mother.current.classList.contains('clickedColor')) {
-      treMother.current.classList.add('clickedTre')
-    }
   }, [])
 
   return (
-    <>
       <div className="tree">
         <ul>
           <li>
             <div className="family">
               <ul>
                 <li>
-                  {/* <div onClick={clickHandler} className="person leftSidePerson" ref={fatherGrandmother}>
-                    <div className="name">
-                      <p className='personTitle'>{data[4].name}</p>
-                      <p className='personInfo'>{data[4].illnesses.length > 0 ? data[4].illnesses.length + ' заболевания' : 'Нет информации'}</p>
-                    </div>
-                  </div> */}
-
                   <UserProfile 
                     name={data[4].name}
                     illnesses={data[4].illnesses}
                     ref={fatherGrandmother}
-                    varyingClass='leftSidePerson'/>
-                    
-                  {/* <div onClick={clickHandler} className="person rightSidePerson" ref={fatherGrandfather}>
-                    <div className="name">
-                      <p className='personTitle'>{data[5].name}</p>
-                      <p className='personInfo'>{data[5].illnesses.length > 0 ? data[5].illnesses.length + ' заболевания' : 'Нет информации'}</p>
-                    </div>
-                  </div> */}
-
+                    varyingClass='leftSidePerson'
+                    clickHandler={clickHandler}/>
                   <UserProfile 
                     name={data[5].name}
                     illnesses={data[5].illnesses}
                     ref={fatherGrandfather}
-                    varyingClass='rightSidePerson'/>
+                    varyingClass='rightSidePerson'
+                    clickHandler={clickHandler}/>
                 </li>
-
                 <li style={{ paddingLeft: '67px' }}>
-                  {/* <div onClick={clickHandler} className="person leftSidePerson" ref={motherGrandmother}>
-                    <div className="name">
-                      <p className='personTitle'>{data[6].name}</p>
-                      <p className='personInfo'>{data[6].illnesses.length > 0 ? data[6].illnesses.length + ' заболевания' : 'Нет информации'}</p>
-                    </div>
-                  </div> */}
-
                   <UserProfile 
                     name={data[6].name}
                     illnesses={data[6].illnesses}
                     ref={motherGrandmother}
-                    varyingClass='leftSidePerson'/>
-                  
-                  {/* <div onClick={clickHandler} className="person rightSidePerson" ref={motherGrandfather}>
-                    <div className="name">
-                      <p className='personTitle'>{data[7].name}</p>
-                      <p className='personInfo'>{data[7].illnesses.length > 0 ? data[7].illnesses.length + ' заболевания' : 'Нет информации'}</p>
-                    </div>
-                  </div> */}
-
+                    varyingClass='leftSidePerson'
+                    clickHandler={clickHandler}/>
                   <UserProfile 
                     name={data[7].name}
                     illnesses={data[7].illnesses}
                     ref={motherGrandfather}
-                    varyingClass='rightSidePerson'/>
+                    varyingClass='rightSidePerson'
+                    clickHandler={clickHandler}/>
                 </li>
               </ul>
 
               <ul style={{height: '0'}}>
                 <li>
-                <div className='tre treLeftGrandmother' ref={treLeftGrandmother}></div>
-                <div className='tre treLeftGrandfather' ref={treLeftGrandfather}></div>
-
-                <div className='tre treRightGrandmother' ref={treRightGrandmother}></div>
-                <div className='tre treRightGrandfather' ref={treRightGrandfather}></div>
+                  <div className='tre treLeftGrandmother' ref={treLeftGrandmother}></div>
+                  <div className='tre treLeftGrandfather' ref={treLeftGrandfather}></div>
+                  <div className='tre treRightGrandmother' ref={treRightGrandmother}></div>
+                  <div className='tre treRightGrandfather' ref={treRightGrandfather}></div>
                 </li>
               </ul>
 
               <ul style={{ padding: '0' }}>
                 <li >
-                
                   <div className='connector agedFatherLeftConnector' ref={agedFatherLeftConnector}></div>
                   <div className='connector agedFatherRightConnector' ref={agedFatherRightConnector}></div>
                   <div className='connector agedMotherLeftConnector' ref={agedMotherLeftConnector}></div>
@@ -277,7 +218,6 @@ let App = () => {
                   <div className='verticalConnector fatherVerticalConnector' ref={fatherVerticalConnector}></div>
                   <div className="connector fatherRightConnector" ref={fatherRightConnector}></div>
                 </li>
-
                 <li>
                   <div className="connector motherLeftConnector" ref={motherLeftConnector}></div>
                   <div className='verticalConnector motherVerticalConnector' ref={motherVerticalConnector}></div>
@@ -287,61 +227,32 @@ let App = () => {
 
               <ul>
                 <li>
-                  {/* <div onClick={clickHandler} className="person leftSidePerson fatherSiblings" ref={fatherSiblings}>
-                    <div className="name">
-                      <p className='personTitle'>{data[9].name}</p>
-                      <p className='personInfo'>{data[9].illnesses.length > 0 ? data[9].illnesses.length + ' заболевания' : 'Нет информации'}</p>
-                    </div>
-                  </div> */}
-                  
                   <UserProfile 
                     name={data[9].name}
                     illnesses={data[9].illnesses}
                     ref={fatherSiblings}
-                    varyingClass='leftSidePerson'/>
-
-                  {/* <div onClick={clickHandler} className="person rightSidePerson father" ref={father}>
-                    <div className="name">
-                      <p className='personTitle'>{data[2].name}</p>
-                      <p className='personInfo'>{data[2].illnesses.length > 0 ? data[2].illnesses.length + ' заболевания' : 'Нет информации'}</p>
-                    </div>
-                  </div> */}
-
+                    varyingClass='leftSidePerson'
+                    clickHandler={clickHandler}/>
                   <UserProfile 
                     name={data[2].name}
                     illnesses={data[2].illnesses}
                     ref={father}
-                    varyingClass='rightSidePerson'/>
-
+                    varyingClass='rightSidePerson'
+                    clickHandler={clickHandler}/>
                 </li>
-
                 <li style={{ paddingLeft: '67px' }}>
-                  {/* <div onClick={clickHandler} className="person leftSidePerson mother" ref={mother}>
-                    <div className="name">
-                      <p className='personTitle'>{data[3].name}</p>
-                      <p className='personInfo'>{data[3].illnesses.length > 0 ? data[3].illnesses.length + ' заболевания' : 'Нет информации'}</p>
-                    </div>
-                  </div> */}
-
                   <UserProfile 
                     name={data[3].name}
                     illnesses={data[3].illnesses}
                     ref={mother}
-                    varyingClass='leftSidePerson'/>
-                  
-                  {/* <div onClick={clickHandler} className="person rightSidePerson motherSiblings" ref={motherSiblings}>
-                    <div className="name">
-                      <p className='personTitle'> {data[10].name}</p>
-                      <p className='personInfo'> {data[10].illnesses.length > 0 ? data[10].illnesses.length + ' заболевания' : 'Нет информации'}</p>
-                    </div>
-                  </div> */}
-
+                    varyingClass='leftSidePerson'
+                    clickHandler={clickHandler}/>
                   <UserProfile 
                     name={data[10].name}
                     illnesses={data[10].illnesses}
                     ref={motherSiblings}
-                    varyingClass='rightSidePerson'/>
-
+                    varyingClass='rightSidePerson'
+                    clickHandler={clickHandler}/>
                 </li>
               </ul>
 
@@ -358,44 +269,29 @@ let App = () => {
                   <div className='meVerticalConnector' ref={meVerticalConnector}></div>
                   <div className='bottomConnector meRightConnector' ref={meRightConnector}></div>
                   <div className='meHorizontalConnector' ref={meHorizontalConnector}></div>
-
                 </li>
               </ul>
 
               <ul>
                 <li className='myselfBlock'>
-                  {/* <div onClick={clickHandler} className="person clickedColor me" ref={me}>
-
-                    <p className='personTitle'>{data[1].name} </p>
-                    <p className='personInfo'>{data[1].illnesses.length > 0 ? data[1].illnesses.length + ' заболевание' : 'Нет информации'}</p>
-
-                  </div> */}
-
                   <UserProfile 
                     name={data[1].name}
                     illnesses={data[1].illnesses}
                     ref={me}
-                    varyingClass=''/>
-
-                  {/* <div onClick={clickHandler} className="person meSiblings" ref={meSiblings}>
-                    <p className='personTitle'>{data[8].name}</p>
-                    <p className='personInfo'>{data[8].illnesses.length > 0 ? data[8].illnesses.length + ' заболевания' : 'Нет информации'}</p>
-                  </div> */}
-
+                    varyingClass=''
+                    clickHandler={clickHandler}/>
                   <UserProfile 
                     name={data[8].name}
                     illnesses={data[8].illnesses}
                     ref={meSiblings}
-                    varyingClass='meSiblings'/>
-
+                    varyingClass='meSiblings'
+                    clickHandler={clickHandler}/>
                 </li>
               </ul>
             </div>
           </li>
         </ul>
       </div>
-    </>
   );
 }
-
 export default App;
