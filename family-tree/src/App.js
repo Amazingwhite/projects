@@ -2,9 +2,9 @@ import React, { useEffect, useRef } from 'react'
 import './styles/App.css';
 import data from './data/data';
 import UserProfile from './components/UserProfile';
+import cn from 'classnames'
 
 let App = () => {
-
   //users refs
   let fatherGrandmother = useRef();
   let fatherGrandfather = useRef();
@@ -61,9 +61,9 @@ let App = () => {
         }
       })
       e.currentTarget.classList.add('clickedColor')
-  }
-    //Подсветка треугольников синим
+    }
 
+    //Подсветка треугольников синим
     if(fatherGrandmother.current.classList.contains('clickedColor')) {
       treLeftGrandmother.current.classList.add('clickedTre') 
     } 
@@ -76,7 +76,6 @@ let App = () => {
     if(motherGrandfather.current.classList.contains('clickedColor')) {
       treRightGrandfather.current.classList.add('clickedTre')
     }
-
     if(father.current.classList.contains('clickedColor')) {
       treFather.current.classList.add('clickedTre')
     }
@@ -86,27 +85,22 @@ let App = () => {
 } 
   useEffect(() => {
     //Подсветка треугольников серым
-
     if(fatherGrandmother.current.classList.contains('fillColor')) treLeftGrandmother.current.classList.add('activeTre')
     if(fatherGrandfather.current.classList.contains('fillColor')) treLeftGrandfather.current.classList.add('activeTre')
     if(motherGrandmother.current.classList.contains('fillColor')) treRightGrandmother.current.classList.add('activeTre')
     if(motherGrandfather.current.classList.contains('fillColor')) treRightGrandfather.current.classList.add('activeTre')
-
     if(father.current.classList.contains('fillColor')) treFather.current.classList.add('activeTre')
     if(mother.current.classList.contains('fillColor')) treMother.current.classList.add('activeTre')
 
     //Подсветка конекторов у "Я"
-
     if (me.current.classList.contains('fillColor') && father.current.classList.contains('fillColor')) {
       meVerticalConnector.current.classList.add('clickedConnector')
       meLeftConnector.current.classList.add('clickedConnector')
     }
-
     if (me.current.classList.contains('fillColor') && mother.current.classList.contains('fillColor')) {
       meVerticalConnector.current.classList.add('clickedConnector')
       meRightConnector.current.classList.add('clickedConnector')
     }
-
     if (me.current.classList.contains('fillColor') && meSiblings.current.classList.contains('fillColor')) {
       meHorizontalConnector.current.classList.add('clickedConnector')
     } else if (meHorizontalConnector.current.classList.contains('clickedConnector')) {
@@ -114,20 +108,17 @@ let App = () => {
     }
 
     //Подсветка конекторов у "Отец"
-
     if (meVerticalConnector.current.classList.contains('clickedConnector') && fatherSiblings.current.classList.contains('fillColor')) {
       meLeftConnector.current.classList.add('clickedConnector')
       fatherRightConnector.current.classList.add('clickedConnector')
       fatherLeftConnector.current.classList.add('clickedConnector')
     }
-
     if (meVerticalConnector.current.classList.contains('clickedConnector') && fatherGrandmother.current.classList.contains('fillColor')) {
       meLeftConnector.current.classList.add('clickedConnector')
       fatherRightConnector.current.classList.add('clickedConnector')
       fatherVerticalConnector.current.classList.add('clickedConnector')
       agedFatherLeftConnector.current.classList.add('clickedConnector')
     }
-
     if (meVerticalConnector.current.classList.contains('clickedConnector') && fatherGrandfather.current.classList.contains('fillColor')) {
       meLeftConnector.current.classList.add('clickedConnector')
       fatherRightConnector.current.classList.add('clickedConnector')
@@ -136,20 +127,17 @@ let App = () => {
     }
 
     //Подстветка конекторов у "Мать"
-
     if (meVerticalConnector.current.classList.contains('clickedConnector') && motherSiblings.current.classList.contains('fillColor')) {
       meRightConnector.current.classList.add('clickedConnector')
       motherRightConnector.current.classList.add('clickedConnector')
       motherLeftConnector.current.classList.add('clickedConnector')
     }
-
     if (meVerticalConnector.current.classList.contains('clickedConnector') && motherGrandmother.current.classList.contains('fillColor')) {
       meRightConnector.current.classList.add('clickedConnector')
       motherLeftConnector.current.classList.add('clickedConnector')
       motherVerticalConnector.current.classList.add('clickedConnector')
       agedMotherLeftConnector.current.classList.add('clickedConnector')
     }
-
     if (meVerticalConnector.current.classList.contains('clickedConnector') && motherGrandfather.current.classList.contains('fillColor')) {
       meRightConnector.current.classList.add('clickedConnector')
       motherLeftConnector.current.classList.add('clickedConnector')

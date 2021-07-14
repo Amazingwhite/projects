@@ -192,8 +192,7 @@
 	border-right: 15px solid transparent;
 	border-top: 18px solid #FFFFFF;
 	margin-top: -18px;
-	box-shadow: 4px rgba(0, 0, 0, 0.09);
-	
+	box-shadow: 4px rgba(0, 0, 0, 0.09);	
 }
 
 .activeTre {
@@ -229,6 +228,3 @@
 .treMother {
 	margin-left: 540px;
 }
-
-
-

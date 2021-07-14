@@ -1,5 +1,6 @@
 import React, { forwardRef, useEffect } from 'react';
 import '.././styles/UserProfile.css';
+import cn from 'classnames';
 
 let UserProfile = forwardRef((props, ref) => {
 
@@ -23,6 +24,4 @@ let UserProfile = forwardRef((props, ref) => {
     </>
     )
 })
-
-
-export default UserProfile
+export default UserProfile;
