@@ -14,7 +14,7 @@ const data = {
     3: {
         id:3,
         name: 'Мать',
-        illnesses: [],
+        illnesses: [1],
         age: 25 
     },
     4: {
@@ -26,7 +26,7 @@ const data = {
     5: {
         id: 5,
         name: 'Дедушка',
-        illnesses: [1],
+        illnesses: [],
         age: 25
     },
     6: {
@@ -38,19 +38,19 @@ const data = {
     7: {
         id: 7,
         name: 'Дедушка',
-        illnesses: [],
+        illnesses: [1],
         age: 25
     },
     8: {
         id: 8,
         name: 'Братья, сестры',
-        illnesses:[1],
+        illnesses:[],
         age: 25
     },
     9: {
         id: 9,
         name: 'Братья, сестры',
-        illnesses:[],
+        illnesses:[1],
         age: 25
     },
     10: {
@@ -62,4 +62,4 @@ const data = {
 
 }
 
-export default data
+export default data;
