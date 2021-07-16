@@ -8,7 +8,7 @@ const data = {
     2: {
         id:2,
         name: 'Отец',
-        illnesses: [1],
+        illnesses: [],
         age: 25 
     },
     3: {
@@ -20,13 +20,13 @@ const data = {
     4: {
         id: 4,
         name: 'Бабушка',
-        illnesses: [1],
+        illnesses: [],
         age: 25
     },
     5: {
         id: 5,
         name: 'Дедушка',
-        illnesses: [],
+        illnesses: [1],
         age: 25
     },
     6: {
@@ -38,13 +38,13 @@ const data = {
     7: {
         id: 7,
         name: 'Дедушка',
-        illnesses: [1],
+        illnesses: [],
         age: 25
     },
     8: {
         id: 8,
         name: 'Братья, сестры',
-        illnesses:[],
+        illnesses:[1],
         age: 25
     },
     9: {
