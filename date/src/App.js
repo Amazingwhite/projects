@@ -10,7 +10,7 @@ export default function App() {
   let [age, setAge] = useState(0);
   let [untilEvent, setUntilEvent] = useState([]);
   let [beforeAfter, setBeforeAfter] = useState(true)
-  const { register, formState: { errors }, handleSubmit } = useForm({ criteriaMode: "all" });
+  const { register, formState: { errors }, handleSubmit, reset } = useForm({ criteriaMode: "all" });
 
   const diffDates = (d1, d2) => Math.floor((d1 - d2) / (365.25 * 24 * 60 * 60 * 1000));
   const countYears = (d1, d2) => (yearsToMonths(getYear(d1)) + (getMonth(d1) + 1) - (yearsToMonths(getYear(d2)) + (getMonth(d2) + 1))) / 12
@@ -180,6 +180,18 @@ export default function App() {
           }}
         />
         <input type="submit" />
+        <input
+        type="button"
+        onClick={() =>
+          reset({
+            birthDate: "",
+            currentDate: "",
+            valuableEvent: "",
+          })
+        }
+        value="Reset inputs"
+      />
+      
       </form>
       {isSubmited && <UserInfo age={age} untilEvent={untilEvent} beforeAfter={beforeAfter} />}
     </>
