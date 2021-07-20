@@ -9,6 +9,7 @@ export default function App() {
   let [isSubmited, setIsSubmited] = useState(false);
   let [age, setAge] = useState(0);
   let [untilEvent, setUntilEvent] = useState([]);
+  let [beforeAfter, setBeforeAfter] = useState(true)
   const { register, formState: { errors }, handleSubmit } = useForm({ criteriaMode: "all" });
 
   const diffDates = (d1, d2) => Math.floor((d1 - d2) / (365.25 * 24 * 60 * 60 * 1000));
@@ -24,6 +25,7 @@ export default function App() {
     let days = getDate(date1) - getDate(date2)
     let hours = getHours(date1) - getHours(new Date())
     let minutes = getMinutes(date1) - getMinutes(new Date())
+    setBeforeAfter(date1 >= date2)
 
     if (isAfter(date1, date2) || isEqual(date1, date2)) {
       if (months < 0 ) months = 12 + months
@@ -179,7 +181,7 @@ export default function App() {
         />
         <input type="submit" />
       </form>
-      {isSubmited && <UserInfo age={age} untilEvent={untilEvent} />}
+      {isSubmited && <UserInfo age={age} untilEvent={untilEvent} beforeAfter={beforeAfter} />}
     </>
   );
 }
