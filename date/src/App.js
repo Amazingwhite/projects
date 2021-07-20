@@ -1,84 +1,121 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import UserInfo from "./components/UserInfo";
 import { ErrorMessage } from "@hookform/error-message";
-import { getMilliseconds, getMinutes, getHours, getDate, getMonth, getYear, yearsToMonths, monthsToDays } from 'date-fns'
+import { getMinutes, getHours, getDate, getMonth, getYear, yearsToMonths, setHours, isAfter, setMinutes, isEqual } from 'date-fns'
 import './App.css'
 
 export default function App() {
   let [isSubmited, setIsSubmited] = useState(false);
   let [age, setAge] = useState(0);
-  let [untilEvent, setUntilEvent] = useState(0);
+  let [untilEvent, setUntilEvent] = useState([]);
+  const { register, formState: { errors }, handleSubmit } = useForm({ criteriaMode: "all" });
 
-  const {
-    register,
-    formState: { errors },
-    handleSubmit
-  } = useForm({ criteriaMode: "all" });
+  const diffDates = (d1, d2) => Math.floor((d1 - d2) / (365.25 * 24 * 60 * 60 * 1000));
+  const countYears = (d1, d2) => (yearsToMonths(getYear(d1)) + (getMonth(d1) + 1) - (yearsToMonths(getYear(d2)) + (getMonth(d2) + 1))) / 12
 
-  let diffDates = (date1, date2) => Math.floor((date1 - date2) / (365.25 * 24 * 60 * 60 * 1000));
-
-  let timeCounter = (date1, date2) => {
+  const timeCounter = (date1, date2) => {
     date1 = new Date(date1);
-    date2 = new Date(date2);
+    date2 = setHours(new Date(date2), getHours(new Date()))
+    date2 = setMinutes(new Date(date2), getMinutes(new Date()))
     let time = [];
-    let years = Math.floor((yearsToMonths(getYear(date1)) + (getMonth(date1) +1) - (yearsToMonths(getYear(date2)) + (getMonth(date2) +1)))/12)
-    time.push({years: years})
+    let years = !isAfter(date1, date2) ? Math.ceil(countYears(date1, date2)) : Math.floor(countYears(date1, date2))
+    let months = (getMonth(date1) + 1) - (getMonth(date2) + 1)
+    let days = getDate(date1) - getDate(date2)
+    let hours = getHours(date1) - getHours(new Date())
+    let minutes = getMinutes(date1) - getMinutes(new Date())
 
-    if(years >= 0){
-      let months = (getMonth(date1)+1) - (getMonth(date2)+1)
-      if(months < 0) {
-        months = 12 + months
-      } 
-      time.push({months: months})
-
-      let days = getDate(date1) - getDate(date2)
-      if(days < 0) {
-        days = 32 - new Date(2013, getMonth(date1)-1, 32).getDate() + days;
-        time[1] = {months: months-1}
-        if(months <= 0) {
-          time[0] = {years: years-1}
-          time[1] = {months: 11}
+    if (isAfter(date1, date2) || isEqual(date1, date2)) {
+      if (months < 0 ) months = 12 + months
+      if (days < 0) {
+        days = 32 - new Date(2021, getMonth(date1) - 1, 32).getDate() + days;
+        months =  months - 1 
+        if (months <= 0 && years !==0) {
+          years -= 1 
+          months =  11 
         }
-      } 
-      time.push({days: days})
-
-      let hours = getHours(date1) - getHours(new Date())
+      }
       if( hours < 0) {
-        hours = 24 + hours;
-        time[2] = {days: days-1}
-        // if(days <=0) {
-        //   time[1] = {months: months-1}
-        //   time[2] = {days: 32 - new Date(2013, getMonth(date1)-1, 32).getDate()}
-        // }
-      }
-      time.push({hours: hours}) 
-
-      let minutes = getMinutes(date1) - getMinutes(new Date())
-      if( minutes < 0) {
-        minutes = 60 + minutes;
-        time[3] = {hours: hours-1}
-        if(hours <= 0) {
-          time[2] = {days: days-1}
-          time[3] = {hours: 23}
+        days = days - 1
+        hours = 24 + hours
+        if( days < 0) {
+          months -= 1
+          days = 32 - new Date(2021, getMonth(date1) - 1, 32).getDate() + days
+        }
+        if(months < 0) {
+          years -= 1
+          months = 12 + months
         }
       }
-      time.push({minutes: minutes}) 
-      setUntilEvent(time)
-    } else {
-      console.log('todo')
+      if (minutes < 0) {
+        hours = hours - 1
+        minutes = 60 + minutes
+        if( hours < 0) {
+          days -= 1
+          hours = 24 + hours
+          if( days < 0) {
+            months -= 1
+            days = 32 - new Date(2021, getMonth(date1) - 1, 32).getDate() + days
+          }
+          if(months < 0) {
+            years -= 1
+            months = 12 + months
+          }
+        }
+      }
+    } else if (!isAfter(date1, date2)) {
+      if (months > 0) months = months - 12
+      if (days > 0) {
+        days = days - (32 - new Date(2021, getMonth(date2) - 1, 32).getDate())
+        months += 1 
+        if (months >= 0 && years !==0) {
+          years += 1 
+          months = months - 12 
+        }
+      }
+      if( hours > 0) {
+        days += 1
+        hours = hours - 24
+        if( days > 0) {
+          months += 1
+          days = -(32 - new Date(2021, getMonth(date1) - 1, 32).getDate() - days)
+        }
+        if(months > 0) {
+          years += 1
+          months -= 12
+        }
+      }
+      if (minutes > 0) {
+        hours = hours + 1
+        minutes = minutes - 60
+        if( hours > 0) {
+          days += 1
+          hours -= 24
+          if( days > 0) {
+            months = months + 1
+            days = -(32 - new Date(2021, getMonth(date1) - 1, 32).getDate() - days)
+          }
+          if(months > 0) {
+            years += 1
+            months -= 12
+          }
+        }
+      }
     }
+    time.push({ years: years })
+    time.push({ months: months })
+    time.push({ days: days })
+    time.push({ hours: hours })
+    time.push({ minutes: minutes })
+    setUntilEvent(time)
   }
-
   const onSubmit = (data) => {
-  let userAge = diffDates(new Date(data.currentDate), new Date(data.birthDate))
-  timeCounter(data.valuableEvent, data.currentDate)
-    if (userAge < 0 || userAge > 130) {
-      setAge(false)
-    } else {
+    let userAge = diffDates(new Date(data.currentDate), new Date(data.birthDate))
+    timeCounter(data.valuableEvent, data.currentDate)
+    if (userAge > 0 && userAge < 130) {
       setAge(userAge)
       setIsSubmited(true)
-    }
+    } 
   }
   return (
     <>
@@ -128,7 +165,7 @@ export default function App() {
             message: 'Max year is 9999'
           },
           required: "This input is required."
-        })} /> 
+        })} />
         <ErrorMessage
           errors={errors}
           name="valuableEvent"
